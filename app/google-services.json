@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "760671653983",
+    "firebase_url": "https://chatapp-9e216.firebaseio.com",
+    "project_id": "chatapp-9e216",
+    "storage_bucket": "chatapp-9e216.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:760671653983:android:e568a1e3fefc6697",
+        "android_client_info": {
+          "package_name": "com.hodamohammadi.chatapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "760671653983-8kkid1f3qgdekb59ueq7v6t55k8phdgc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC10PZOTODp93ifzwgoi9_pxJT-Uxpb0MA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
