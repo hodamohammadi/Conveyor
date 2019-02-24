@@ -1,4 +1,4 @@
-package com.hodamohammadi.chatapp
+package com.hodamohammadi.chatapp.fragments
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import com.hodamohammadi.chatapp.R
 import com.hodamohammadi.chatapp.models.DefaultMessage
 import com.hodamohammadi.chatapp.utils.FirebaseHelper
 import com.stfalcon.chatkit.commons.ImageLoader

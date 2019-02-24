@@ -1,7 +1,9 @@
-package com.hodamohammadi.chatapp
+package com.hodamohammadi.chatapp.activities
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import com.hodamohammadi.chatapp.R
+import com.hodamohammadi.chatapp.fragments.SingleChatFragment
 import com.hodamohammadi.chatapp.utils.FirebaseHelper
 
 /**

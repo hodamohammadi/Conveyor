@@ -1,4 +1,4 @@
-package com.hodamohammadi.chatapp
+package com.hodamohammadi.chatapp.activities
 
 import android.support.v7.app.AppCompatActivity
 import android.view.View
@@ -14,6 +14,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
+import com.hodamohammadi.chatapp.R
 
 /**
  * Activity for authentication screens.
