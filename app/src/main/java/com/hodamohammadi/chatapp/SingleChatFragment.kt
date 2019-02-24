@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import com.hodamohammadi.chatapp.models.DefaultMessage
-import com.hodamohammadi.chatapp.models.DefaultUser
+import com.hodamohammadi.chatapp.utils.FirebaseHelper
 import com.stfalcon.chatkit.commons.ImageLoader
 import com.stfalcon.chatkit.commons.models.IMessage
 import com.stfalcon.chatkit.messages.MessageInput
@@ -40,13 +40,13 @@ class SingleChatFragment : Fragment(), MessageInput.InputListener, MessageInput.
     }
 
     private fun initAdapter() {
-        messagesAdapter = MessagesListAdapter<IMessage>("senderId", imageLoader)
+        messagesAdapter = MessagesListAdapter<IMessage>(FirebaseHelper.getCurrentUser().id, imageLoader)
         this.messagesList.setAdapter(messagesAdapter)
     }
 
     override fun onSubmit(input: CharSequence): Boolean {
         //TODO: set user info.
-        var user = DefaultUser("senderId", "userName", null)
+        val user = FirebaseHelper.getCurrentUser()
         messagesAdapter.addToStart(DefaultMessage("messageId", input.toString(), Date(), user), true)
         return true
     }

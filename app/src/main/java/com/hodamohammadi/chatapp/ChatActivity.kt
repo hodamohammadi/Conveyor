@@ -2,6 +2,7 @@ package com.hodamohammadi.chatapp
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import com.hodamohammadi.chatapp.utils.FirebaseHelper
 
 /**
  * Main activity for chat screens.
@@ -12,7 +13,7 @@ class ChatActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.chat_activity)
 
-        if (savedInstanceState == null) {
+        if (FirebaseHelper.isUserAuthenticated()) {
             supportFragmentManager
                     .beginTransaction()
                     .add(R.id.chat_container, SingleChatFragment())
