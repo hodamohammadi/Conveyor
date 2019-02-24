@@ -15,7 +15,7 @@ class ChatActivity : AppCompatActivity() {
         if (savedInstanceState == null) {
             supportFragmentManager
                     .beginTransaction()
-                    .add(R.id.chat_container, SingleChatFragment.newInstance())
+                    .add(R.id.chat_container, SingleChatFragment())
                     .commit()
         }
     }
