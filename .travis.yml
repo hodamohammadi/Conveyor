@@ -56,8 +56,8 @@ script:
   - ./gradlew assembleDebug
 # run all the local unit tests of app module
   - ./gradlew test
-# run lint checker
-  - ./gradlew lint
+# run lint checker (Temporarily Disabled)
+#  - ./gradlew lint
 
 env:
   global:
