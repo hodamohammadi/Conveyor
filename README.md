@@ -1,13 +1,38 @@
 # Conveyor
+[![Build Status](https://travis-ci.org/itsAlexNguyen/ChatApp.svg?branch=master)](https://travis-ci.org/itsAlexNguyen/ChatApp)
+
+Conveyor is a simple Conversational-UI that leverages [Firebase](https://firebase.google.com/) and various machine learning models to create a unique messaging experience. Conveyor illustrates how to use [MLKit](https://firebase.google.com/docs/ml-kit/), [Cloud Functions](https://firebase.google.com/docs/functions/), [Real Time Database](https://firebase.google.com/docs/database/) and [Authentication](https://firebase.google.com/docs/auth/) can be used. 
 
 ## Table of contents
 
 - [Requirements](#requirements)
-- [Installation](#installation)
 - [Getting Started](#getting-started)
 - [Contributing](#contributing)
+- [Features](#features)
 - [Feature and Bug Requests](#feature-and-bug-requests)
 - [Licence](#license)
+
+## Requirements
+- [Android Studio 3.3.0](https://developer.android.com/studio)
+- [JDK 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
+
+## Getting Started
+1. Clone the repository
+2. Import the project. Open Android Studio, click `Open an existing Android Studio project`, and select the project.
+3. Wait for `Gradle` to build the project
+6. Run the app. Click `Run > Run 'conveyor'`. After the project builds you'll be prompted to build or launch an emulator.
+
+## Features
+
+:white_check_mark: Stable :hourglass_flowing_sand: In progress
+
+| Feature        | Status                    |
+|----------------|---------------------------|
+| Travis CI      | :white_check_mark:        | 
+| Firebase Setup | :white_check_mark:        |
+| Authentication | :hourglass_flowing_sand:  |
+| Chat UI        | :hourglass_flowing_sand:  |
+
 
 ## Contributing
 Please see the [CONTRIBUTING](https://github.com/Instagram/hodamohammadi/ChatApp/blob/master/.github/CONTRIBUTING.md) file for how to help.
