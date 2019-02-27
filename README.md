@@ -1,7 +1,7 @@
 # Conveyor
 [![Build Status](https://travis-ci.org/itsAlexNguyen/ChatApp.svg?branch=master)](https://travis-ci.org/itsAlexNguyen/ChatApp)
 
-Conveyor is a simple Conversational-UI that leverages [Firebase](https://firebase.google.com/) and various machine learning models to create a unique messaging experience. Conveyor illustrates how to use [MLKit](https://firebase.google.com/docs/ml-kit/), [Cloud Functions](https://firebase.google.com/docs/functions/), [Real Time Database](https://firebase.google.com/docs/database/) and [Authentication](https://firebase.google.com/docs/auth/) can be used. 
+Conveyor is a simple Conversational-UI that leverages [Firebase](https://firebase.google.com/) and various machine learning models to create a unique messaging experience. Conveyor illustrates how [MLKit](https://firebase.google.com/docs/ml-kit/), [Cloud Functions](https://firebase.google.com/docs/functions/), [Real Time Database](https://firebase.google.com/docs/database/) and [Authentication](https://firebase.google.com/docs/auth/) can be used to build a sophisticated application. 
 
 ## Table of contents
 
@@ -15,6 +15,7 @@ Conveyor is a simple Conversational-UI that leverages [Firebase](https://firebas
 ## Requirements
 - [Android Studio 3.3.0](https://developer.android.com/studio)
 - [JDK 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
+- Kotlin Knowledge 
 
 ## Getting Started
 1. Clone the repository
