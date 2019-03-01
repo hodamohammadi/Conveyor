@@ -9,7 +9,7 @@ apply plugin: 'com.google.gms.google-services'
 android {
     compileSdkVersion 26
     defaultConfig {
-        applicationId "com.hodamohammadi.chatapp"
+        applicationId "com.hodamohammadi.conveyor"
         minSdkVersion 23
         targetSdkVersion 26
         versionCode 1
