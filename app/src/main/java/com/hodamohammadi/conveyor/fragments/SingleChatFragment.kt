@@ -7,14 +7,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import com.hodamohammadi.conveyor.R
-import com.hodamohammadi.conveyor.models.DefaultMessage
 import com.hodamohammadi.conveyor.utils.FirebaseHelper
 import com.stfalcon.chatkit.commons.ImageLoader
 import com.stfalcon.chatkit.commons.models.IMessage
 import com.stfalcon.chatkit.messages.MessageInput
 import com.stfalcon.chatkit.messages.MessagesList
 import com.stfalcon.chatkit.messages.MessagesListAdapter
-import java.util.*
 
 /**
  * Fragment for a single chat screen.
@@ -22,15 +20,14 @@ import java.util.*
 class SingleChatFragment : Fragment(), MessageInput.InputListener, MessageInput.AttachmentsListener,
         MessageInput.TypingListener {
 
-    private lateinit var messagesList : MessagesList
-    private lateinit var messagesAdapter : MessagesListAdapter<IMessage>
+    private lateinit var messagesList: MessagesList
+    private lateinit var messagesAdapter: MessagesListAdapter<IMessage>
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view : View = inflater?.inflate(R.layout.single_chat_fragment, container, false)
+        this.messagesList = view.findViewById(R.id.messagesList) as MessagesList
 
-        this.messagesList = view.findViewById<MessagesList>(R.id.messagesList) as MessagesList
-
-        val input = view.findViewById<MessageInput>(R.id.input) as MessageInput
+        val input = view.findViewById(R.id.input) as MessageInput
         input.setInputListener(this)
         input.setTypingListener(this)
         input.setAttachmentsListener(this)
@@ -41,14 +38,13 @@ class SingleChatFragment : Fragment(), MessageInput.InputListener, MessageInput.
     }
 
     private fun initAdapter() {
-        messagesAdapter = MessagesListAdapter<IMessage>(FirebaseHelper.getCurrentUser().id, imageLoader)
+        messagesAdapter = MessagesListAdapter(FirebaseHelper.getCurrentUser().id, imageLoader)
         this.messagesList.setAdapter(messagesAdapter)
     }
 
     override fun onSubmit(input: CharSequence): Boolean {
-        //TODO: set user info.
-        val user = FirebaseHelper.getCurrentUser()
-        messagesAdapter.addToStart(DefaultMessage("messageId", input.toString(), Date(), user), true)
+        val message: IMessage = FirebaseHelper.sendMessage(input.toString())
+        messagesAdapter.addToStart(message, true)
         return true
     }
 
