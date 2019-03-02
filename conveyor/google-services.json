@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "587628184895",
+    "firebase_url": "https://conveyor-273f2.firebaseio.com",
+    "project_id": "conveyor-273f2",
+    "storage_bucket": "conveyor-273f2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:587628184895:android:a617739b45c294fc",
+        "android_client_info": {
+          "package_name": "com.hodamohammadi.conveyor"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "587628184895-fvfrtn9q9fk0fmma11lnt7s8gn78hebr.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.hodamohammadi.conveyor",
+            "certificate_hash": "b71ae50a5eca7570dca9974dc8f684ec2aaf2489"
+          }
+        },
+        {
+          "client_id": "587628184895-48e0jtchdvlcr6pqt3i274cnd9i83ppl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAHb_V2FrKxhsmCSnz7i5nlBTSWOn7zX9k"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "587628184895-48e0jtchdvlcr6pqt3i274cnd9i83ppl.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
