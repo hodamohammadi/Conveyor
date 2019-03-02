@@ -1,8 +1,8 @@
-package com.hodamohammadi.chatapp.utils
+package com.hodamohammadi.conveyor.utils
 
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
-import com.hodamohammadi.chatapp.models.DefaultUser
+import com.hodamohammadi.conveyor.models.DefaultUser
 
 
 /**
