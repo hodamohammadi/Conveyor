@@ -15,11 +15,11 @@
       },
       "oauth_client": [
         {
-          "client_id": "587628184895-3r38fkot2jt65dujr82hdecle0kdvbed.apps.googleusercontent.com",
+          "client_id": "587628184895-fvfrtn9q9fk0fmma11lnt7s8gn78hebr.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.hodamohammadi.conveyor",
-            "certificate_hash": "1d62649864f73031ba87befd283fc68fc7a42565"
+            "certificate_hash": "b71ae50a5eca7570dca9974dc8f684ec2aaf2489"
           }
         },
         {
