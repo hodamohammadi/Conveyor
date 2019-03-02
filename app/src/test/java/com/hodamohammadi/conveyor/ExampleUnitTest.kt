@@ -1,4 +1,4 @@
-package com.hodamohammadi.chatapp
+package com.hodamohammadi.conveyor
 
 import org.junit.Test
 

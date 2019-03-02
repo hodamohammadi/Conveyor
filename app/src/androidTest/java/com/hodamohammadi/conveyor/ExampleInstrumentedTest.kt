@@ -1,4 +1,4 @@
-package com.hodamohammadi.chatapp
+package com.hodamohammadi.conveyor
 
 import android.support.test.InstrumentationRegistry
 import android.support.test.runner.AndroidJUnit4
