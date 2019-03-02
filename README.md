@@ -1,5 +1,6 @@
 # Conveyor
-[![Build Status](https://travis-ci.org/itsAlexNguyen/ChatApp.svg?branch=master)](https://travis-ci.org/itsAlexNguyen/ChatApp)
+[![Build Status](https://travis-ci.org/hodamohammadi/Conveyor.svg?branch=master)](https://travis-ci.org/hodamohammadi/Conveyor)
+[![License](http://img.shields.io/badge/license-MIT-green.svg?style=flat)](https://github.com/Instagram/hodamohammadi/Conveyor/blob/master/LICENSE)
 
 Conveyor is a simple Conversational-UI that leverages [Firebase](https://firebase.google.com/) and various machine learning models to create a unique messaging experience. Conveyor illustrates how [MLKit](https://firebase.google.com/docs/ml-kit/), [Cloud Functions](https://firebase.google.com/docs/functions/), [Real Time Database](https://firebase.google.com/docs/database/) and [Authentication](https://firebase.google.com/docs/auth/) can be used to build a sophisticated application. 
 
@@ -36,11 +37,11 @@ Conveyor is a simple Conversational-UI that leverages [Firebase](https://firebas
 
 
 ## Contributing
-Please see the [CONTRIBUTING](https://github.com/Instagram/hodamohammadi/ChatApp/blob/master/.github/CONTRIBUTING.md) file for how to help.
+Please see the [CONTRIBUTING](https://github.com/Instagram/hodamohammadi/Conveyor/blob/master/.github/CONTRIBUTING.md) file for how to help.
 
 ## Feature and Bug Requests
 
-Want a new feature or found a new bug? First read the [issue guidelines](https://github.com/Instagram/hodamohammadi/ChatApp/blob/master/.github/CONTRIBUTING.md) and search for existing and closed issues. If you don't see your feature request or your bug, [open a new issue](https://github.com/hodamohammadi/ChatApp/issues/new).
+Want a new feature or found a new bug? First read the [issue guidelines](https://github.com/Instagram/hodamohammadi/Conveyor/blob/master/.github/CONTRIBUTING.md) and search for existing and closed issues. If you don't see your feature request or your bug, [open a new issue](https://github.com/hodamohammadi/Conveyor/issues/new).
 
 ## License
 ```
