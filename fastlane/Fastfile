@@ -19,5 +19,6 @@ platform :android do
   desc "Runs checks for the build"
   lane :checks do
     gradle(task: "clean assembleDebug test")
+    danger
   end
 end
