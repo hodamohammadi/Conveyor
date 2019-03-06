@@ -14,3 +14,9 @@ warn("Big PR") if git.lines_of_code > 500
 android_lint.gradle_task = "conveyor:lintDebug"
 android_lint.report_file = "conveyor/build/reports/lint-results-debug.xml"
 android_lint.lint
+
+####
+# ktlint
+####
+checkstyle_format.base_path = Dir.pwd
+checkstyle_format.report 'conveyor/build/reports/ktlint.xml'
