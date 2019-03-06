@@ -46,4 +46,3 @@ before_install:
   
 script:
   - fastlane checks
-  - bundle exec danger
