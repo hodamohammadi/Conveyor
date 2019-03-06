@@ -19,10 +19,5 @@ platform :android do
   desc "Runs checks for the build"
   lane :checks do
     gradle(task: "clean assembleDebug test")
-    danger(
-      danger_id: "code-check",
-      dangerfile: "Dangerfile",
-      github_api_token: ENV["DANGER_GITHUB_API_TOKEN"]
-    )
   end
 end
