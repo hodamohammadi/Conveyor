@@ -19,4 +19,4 @@ android_lint.lint
 # ktlint
 ####
 checkstyle_format.base_path = Dir.pwd
-checkstyle_format.report 'conveyor/build/reports/ktlint.xml'
+checkstyle_format.report 'conveyor/build/reports/ktlint/ktlintMainSourceSetCheck.xml'
