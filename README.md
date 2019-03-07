@@ -1,6 +1,7 @@
 # Conveyor
 [![Build Status](https://travis-ci.org/hodamohammadi/Conveyor.svg?branch=master)](https://travis-ci.org/hodamohammadi/Conveyor)
 [![License](http://img.shields.io/badge/license-MIT-green.svg?style=flat)](https://github.com/Instagram/hodamohammadi/Conveyor/blob/master/LICENSE)
+[![ktlint](https://img.shields.io/badge/code%20style-%E2%9D%A4-FF4081.svg)](https://ktlint.github.io/)
 
 Conveyor is a simple Conversational-UI that leverages [Firebase](https://firebase.google.com/) and various machine learning models to create a unique messaging experience. Conveyor illustrates how [MLKit](https://firebase.google.com/docs/ml-kit/), [Cloud Functions](https://firebase.google.com/docs/functions/), [Real Time Database](https://firebase.google.com/docs/database/) and [Authentication](https://firebase.google.com/docs/auth/) can be used to build a sophisticated application. 
 
@@ -28,12 +29,16 @@ Conveyor is a simple Conversational-UI that leverages [Firebase](https://firebas
 
 :white_check_mark: Stable :hourglass_flowing_sand: In progress
 
-| Feature        | Status                    |
-|----------------|---------------------------|
-| Travis CI      | :white_check_mark:        | 
-| Firebase Setup | :white_check_mark:        |
-| Authentication | :hourglass_flowing_sand:  |
-| Chat UI        | :hourglass_flowing_sand:  |
+| Feature                  | Status                    |
+|--------------------------|---------------------------|
+| Travis CI                | :white_check_mark:        |
+| Fastlane                 | :white_check_mark:        |    
+| Danger                   | :white_check_mark:        |
+| Ktlint                   | :white_check_mark:        |  
+| AppCenter Deployment     | :hourglass_flowing_sand:  | 
+| Firebase Setup           | :white_check_mark:        |
+| Authentication           | :hourglass_flowing_sand:  |
+| Chat UI                  | :hourglass_flowing_sand:  |
 
 
 ## Contributing

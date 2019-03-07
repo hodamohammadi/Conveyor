@@ -8,15 +8,17 @@ warn("PR is classed as Work in Progress") if github.pr_title.include? "[WIP]"
 # Warn when there is a big PR
 warn("Big PR") if git.lines_of_code > 500
 
-####
+# Mainly to encourage writing up some reasoning about the PR, rather than
+# just leaving a title
+if github.pr_body.length < 5
+    warn("Please provide a summary in the Pull Request description")
+end
+
 # Android Lint
-####
 android_lint.gradle_task = "conveyor:lintDebug"
 android_lint.report_file = "conveyor/build/reports/lint-results-debug.xml"
 android_lint.lint
 
-####
-# ktlint
-####
+# Kotlin Lint
 checkstyle_format.base_path = Dir.pwd
 checkstyle_format.report 'conveyor/build/reports/ktlint/ktlintMainSourceSetCheck.xml'
