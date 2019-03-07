@@ -15,7 +15,7 @@ if github.pr_body.length < 5
 end
 
 # Android Lint
-android_lint.gradle_task = "conveyor:lintDebug"
+android_lint.skip_gradle_task = true
 android_lint.report_file = "conveyor/build/reports/lint-results-debug.xml"
 android_lint.lint
 

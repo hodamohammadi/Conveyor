@@ -5,16 +5,21 @@ default_platform(:android)
 platform :android do
   desc "Runs checks for the build"
   lane :checks do
+    gradle(task: "clean assembleDebug test ktlintCheck lintDebug")
+    danger
+  end
+
+  desc "Deploy to AppCenter"
+  lane :deploy do
     android_set_version_code(
       version_code: ENV["TRAVIS_BUILD_NUMBER"],
       gradle_file: "conveyor/build.gradle"
     )
-    gradle(task: "clean assembleDebug test ktlintCheck")
+    gradle(task: "clean assembleDebug")
     appcenter_upload(
       app_name: "Conveyor",
       group: "Collaborators,Public",
       apk: "conveyor/build/outputs/apk/debug/conveyor-debug.apk"
     )
-    danger
   end
 end
