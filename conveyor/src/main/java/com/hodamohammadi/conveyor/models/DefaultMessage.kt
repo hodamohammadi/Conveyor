@@ -3,54 +3,29 @@ package com.hodamohammadi.conveyor.models
 import com.stfalcon.chatkit.commons.models.IMessage
 import com.stfalcon.chatkit.commons.models.IUser
 import java.io.Serializable
-import java.util.*
+import java.util.Date
 
 /**
  * Default model for a single message.
  */
-class DefaultMessage: IMessage, Serializable {
-    private var id: String
-    private var text: String
-    private var createdAt: Date
-    private var user: IUser
-
-    constructor(id: String, text: String, createdAt: Date, user: DefaultUser) {
-        this.id = id
-        this.text = text
-        this.createdAt = createdAt
-        this.user = user
-    }
-
-    fun setId(id: String) {
-        this.id = id
-    }
+data class DefaultMessage(val messageId: String,
+                          val messageText: String,
+                          val messageCreatedAt: Date,
+                          val messageUser: DefaultUser) : Serializable, IMessage {
 
     override fun getId(): String {
-        return id
-    }
-
-    fun setText(id: String) {
-        this.text = text
+        return messageId
     }
 
     override fun getText(): String {
-        return text
-    }
-
-    fun setcreatedAt(createdAt: Date) {
-        this.createdAt = createdAt
+        return messageText
     }
 
     override fun getCreatedAt(): Date {
-        return createdAt
-    }
-
-    fun setuser(user: DefaultUser) {
-        this.user = user
+        return messageCreatedAt
     }
 
     override fun getUser(): IUser {
-        return user
+        return messageUser
     }
-
 }
