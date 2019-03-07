@@ -19,6 +19,10 @@ platform :android do
   desc "Runs checks for the build"
   lane :checks do
     gradle(task: "clean assembleDebug test ktlintCheck")
+    appcenter_upload(
+      app_name: "Conveyor",
+      apk: "conveyor/build/outputs/apk/debug/conveyor-debug.apk"
+    )
     danger
   end
 end

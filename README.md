@@ -37,6 +37,7 @@ Conveyor is a simple Conversational-UI that leverages [Firebase](https://firebas
 | Ktlint                   | :white_check_mark:        |  
 | AppCenter Deployment     | :hourglass_flowing_sand:  | 
 | Firebase Setup           | :white_check_mark:        |
+| FCM                      | :white_check_mark:        |
 | Authentication           | :hourglass_flowing_sand:  |
 | Chat UI                  | :hourglass_flowing_sand:  |
 
