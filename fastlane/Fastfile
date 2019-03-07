@@ -12,6 +12,7 @@ platform :android do
     gradle(task: "clean assembleDebug test ktlintCheck")
     appcenter_upload(
       app_name: "Conveyor",
+      group: "Collaborators,Public",
       apk: "conveyor/build/outputs/apk/debug/conveyor-debug.apk"
     )
     danger
