@@ -45,5 +45,4 @@ before_install:
   - bundle install
   
 script:
-  - if [ "$TRAVIS_PULL_REQUEST" = "true" ]; fastlane checks; fi
-  - if [ "$TRAVIS_PULL_REQUEST" = "false" ]; fastlane deploy; fi
+  - if [ "$TRAVIS_PULL_REQUEST" == "true" ]; fastlane checks ; else fastlane deploy ; fi
