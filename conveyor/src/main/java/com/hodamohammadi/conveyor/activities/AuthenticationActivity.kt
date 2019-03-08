@@ -1,7 +1,6 @@
 package com.hodamohammadi.conveyor.activities
 
 import android.support.v7.app.AppCompatActivity
-import android.view.View
 import com.google.android.gms.common.api.GoogleApiClient
 import android.widget.Toast
 import com.google.android.gms.common.ConnectionResult
@@ -13,17 +12,18 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import android.os.Bundle
 import android.util.Log
-import android.widget.Button
 import com.hodamohammadi.conveyor.R
+import kotlinx.android.synthetic.main.authentication_activity.*
 
 /**
  * Activity for authentication screens.
  */
-class AuthenticationActivity : AppCompatActivity(), GoogleApiClient.OnConnectionFailedListener, View.OnClickListener {
+class AuthenticationActivity : AppCompatActivity(), GoogleApiClient.OnConnectionFailedListener {
 
-    private val TAG = "AuthenticationActivity"
+    companion object {
+        private val TAG = AuthenticationActivity::class.qualifiedName
+    }
     private val RC_SIGN_IN = 9001
-    private var googleSignInButton: Button? = null
 
     private var googleApiClient: GoogleApiClient? = null
     private var firebaseAuth: FirebaseAuth? = null
@@ -32,11 +32,7 @@ class AuthenticationActivity : AppCompatActivity(), GoogleApiClient.OnConnection
         super.onCreate(savedInstanceState)
         setContentView(R.layout.authentication_activity)
 
-        // Assign fields
-        googleSignInButton = findViewById<Button>(R.id.google_login) as Button
-
-        // Set click listeners
-        googleSignInButton!!.setOnClickListener(this)
+        googleLoginButton.setOnClickListener { googleLogin() }
 
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.default_web_client_id))
@@ -51,14 +47,7 @@ class AuthenticationActivity : AppCompatActivity(), GoogleApiClient.OnConnection
         firebaseAuth = FirebaseAuth.getInstance()
     }
 
-    override fun onClick(view: View) {
-        when (view.id) {
-            R.id.google_login -> signIn()
-            else -> return
-        }
-    }
-
-    private fun signIn() {
+    private fun googleLogin() {
         val signInIntent = Auth.GoogleSignInApi.getSignInIntent(googleApiClient)
         startActivityForResult(signInIntent, RC_SIGN_IN)
     }

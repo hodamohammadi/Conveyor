@@ -6,13 +6,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import com.hodamohammadi.conveyor.R
 import com.hodamohammadi.conveyor.utils.FirebaseHelper
+import com.hodamohammadi.conveyor.R
 import com.stfalcon.chatkit.commons.ImageLoader
 import com.stfalcon.chatkit.commons.models.IMessage
 import com.stfalcon.chatkit.messages.MessageInput
-import com.stfalcon.chatkit.messages.MessagesList
 import com.stfalcon.chatkit.messages.MessagesListAdapter
+import kotlinx.android.synthetic.main.single_chat_fragment.*
 
 /**
  * Fragment for a single chat screen.
@@ -20,25 +20,26 @@ import com.stfalcon.chatkit.messages.MessagesListAdapter
 class SingleChatFragment : Fragment(), MessageInput.InputListener, MessageInput.AttachmentsListener,
         MessageInput.TypingListener {
 
-    private lateinit var messagesList: MessagesList
     private lateinit var messagesAdapter: MessagesListAdapter<IMessage>
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view : View = inflater?.inflate(R.layout.single_chat_fragment, container, false)
-        this.messagesList = view.findViewById(R.id.messagesList) as MessagesList
+    override fun onCreateView(
+            inflater: LayoutInflater,
+            container: ViewGroup?,
+            savedInstanceState: Bundle?
+    ): View {
+        return inflater.inflate(R.layout.single_chat_fragment, container, false)
+    }
 
-        val input = view.findViewById(R.id.input) as MessageInput
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         input.setInputListener(this)
         input.setTypingListener(this)
         input.setAttachmentsListener(this)
-
         initAdapter()
-
-        return view
     }
 
     private fun initAdapter() {
-        messagesAdapter = MessagesListAdapter(FirebaseHelper.getCurrentUser().id, imageLoader)
+        messagesAdapter = MessagesListAdapter(FirebaseHelper.getCurrentUser().id, CustomImageLoader)
         this.messagesList.setAdapter(messagesAdapter)
     }
 
@@ -60,7 +61,7 @@ class SingleChatFragment : Fragment(), MessageInput.InputListener, MessageInput.
         //do nothing
     }
 
-    object imageLoader : ImageLoader {
+    object CustomImageLoader : ImageLoader {
         override fun loadImage(imageView: ImageView, url: String?, payload: Any?) {
             //TODO: set image.
         }
