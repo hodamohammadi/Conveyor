@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import com.hodamohammadi.conveyor.utils.FirebaseHelper
 import com.hodamohammadi.conveyor.R
+import com.hodamohammadi.conveyor.utils.AppUtils
 import com.stfalcon.chatkit.commons.ImageLoader
 import com.stfalcon.chatkit.commons.models.IMessage
 import com.stfalcon.chatkit.messages.MessageInput
@@ -39,7 +40,8 @@ class SingleChatFragment : Fragment(), MessageInput.InputListener, MessageInput.
     }
 
     private fun initAdapter() {
-        messagesAdapter = MessagesListAdapter(FirebaseHelper.getCurrentUser().id, CustomImageLoader)
+        messagesAdapter =
+                MessagesListAdapter(FirebaseHelper.getCurrentUser().id, AppUtils.CustomImageLoader)
         this.messagesList.setAdapter(messagesAdapter)
     }
 
@@ -59,11 +61,5 @@ class SingleChatFragment : Fragment(), MessageInput.InputListener, MessageInput.
 
     override fun onStopTyping() {
         // do nothing
-    }
-
-    object CustomImageLoader : ImageLoader {
-        override fun loadImage(imageView: ImageView, url: String?, payload: Any?) {
-            // TODO: set image.
-        }
     }
 }
