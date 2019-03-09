@@ -23,9 +23,9 @@ class SingleChatFragment : Fragment(), MessageInput.InputListener, MessageInput.
     private lateinit var messagesAdapter: MessagesListAdapter<IMessage>
 
     override fun onCreateView(
-            inflater: LayoutInflater,
-            container: ViewGroup?,
-            savedInstanceState: Bundle?
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View {
         return inflater.inflate(R.layout.single_chat_fragment, container, false)
     }
@@ -50,20 +50,20 @@ class SingleChatFragment : Fragment(), MessageInput.InputListener, MessageInput.
     }
 
     override fun onAddAttachments() {
-        //TODO: Implement method.
+        // TODO: Implement method.
     }
 
     override fun onStartTyping() {
-        //do nothing
+        // do nothing
     }
 
     override fun onStopTyping() {
-        //do nothing
+        // do nothing
     }
 
     object CustomImageLoader : ImageLoader {
         override fun loadImage(imageView: ImageView, url: String?, payload: Any?) {
-            //TODO: set image.
+            // TODO: set image.
         }
     }
 }

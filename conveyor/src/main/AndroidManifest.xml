@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest package="com.hodamohammadi.conveyor"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <application
         android:allowBackup="true"
@@ -12,14 +13,15 @@
         <activity android:name="com.hodamohammadi.conveyor.activities.AuthenticationActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
+                <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity android:name="com.hodamohammadi.conveyor.activities.ChatActivity" />
 
         <!-- [START firebase_service] -->
-        <service android:name=".services.ConveyorNotificationService">
+        <service android:name=".services.ConveyorNotificationService"
+            tools:ignore="ExportedService">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
