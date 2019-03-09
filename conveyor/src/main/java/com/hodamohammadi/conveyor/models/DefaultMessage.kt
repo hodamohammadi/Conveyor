@@ -9,10 +9,10 @@ import java.util.Date
  * Default model for a single message.
  */
 data class DefaultMessage(
-        val messageId: String,
-        val messageText: String,
-        val messageCreatedAt: Date,
-        val messageUser: DefaultUser
+    val messageId: String,
+    val messageText: String,
+    val messageCreatedAt: Date,
+    val messageUser: DefaultUser
 ): Serializable, IMessage {
 
     override fun getId(): String {

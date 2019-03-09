@@ -7,9 +7,9 @@ import java.io.Serializable
  * Default model for a user.
  */
 data class DefaultUser(
-        val userId: String,
-        val userName: String?,
-        val userAvatar: String?
+    val userId: String,
+    val userName: String?,
+    val userAvatar: String?
 ): Serializable, IUser {
 
     override fun getId(): String {
