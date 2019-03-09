@@ -11,14 +11,14 @@ import com.google.firebase.database.ValueEventListener
 import com.hodamohammadi.conveyor.models.DefaultMessage
 import com.hodamohammadi.conveyor.models.DefaultUser
 import com.stfalcon.chatkit.commons.models.IMessage
-import java.util.*
-
+import java.util.Date
 
 /**
  * Helper class for Firebase services.
  */
 class FirebaseHelper {
     companion object {
+        private val TAG = FirebaseHelper::class.qualifiedName
         private val firebaseAuth: FirebaseAuth = FirebaseAuth.getInstance()
         private val firebaseDatabase: FirebaseDatabase = FirebaseDatabase.getInstance()
         private val firebaseUser: FirebaseUser? = firebaseAuth.currentUser
@@ -28,11 +28,13 @@ class FirebaseHelper {
         }
 
         fun getCurrentUser(): DefaultUser {
-            return DefaultUser(firebaseUser!!.uid, firebaseUser.displayName, firebaseUser.photoUrl.toString())
+            return DefaultUser(firebaseUser!!.uid, firebaseUser.displayName,
+                    firebaseUser.photoUrl.toString())
         }
 
         fun sendMessage(messageInput: String): IMessage {
-            val messageReference: DatabaseReference = getThreadsDatabase().child(getCurrentThreadId())
+            val messageReference: DatabaseReference =
+                    getThreadsDatabase().child(getCurrentThreadId())
             val messageKey: String? = messageReference.push().key
             val message = DefaultMessage(messageKey!!, messageInput, Date(), getCurrentUser())
             messageReference.child(messageKey).setValue(message)
@@ -40,14 +42,15 @@ class FirebaseHelper {
         }
 
         private fun getThreadsDatabase(): DatabaseReference {
-            val databaseReference: DatabaseReference = firebaseDatabase.getReference(FirebaseConstants.THREADS_DATABASE)
+            val databaseReference: DatabaseReference =
+                    firebaseDatabase.getReference(FirebaseConstants.THREADS_DATABASE)
             databaseReference.addValueEventListener(object : ValueEventListener {
                 override fun onDataChange(dataSnapshot: DataSnapshot) {
-                    Log.d("CHAT", "successful database reference")
+                    Log.d(TAG, "successful database reference")
                 }
 
                 override fun onCancelled(databaseError: DatabaseError) {
-                    Log.e("CHAT", databaseError.message)
+                    Log.e(TAG, databaseError.message)
                 }
             })
             return databaseReference
@@ -56,6 +59,5 @@ class FirebaseHelper {
         private fun getCurrentThreadId(): String {
             return "thread_id_placeholder"
         }
-
     }
 }

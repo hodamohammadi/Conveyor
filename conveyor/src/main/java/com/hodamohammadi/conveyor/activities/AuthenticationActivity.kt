@@ -19,7 +19,6 @@ import kotlinx.android.synthetic.main.authentication_activity.*
  * Activity for authentication screens.
  */
 class AuthenticationActivity : AppCompatActivity(), GoogleApiClient.OnConnectionFailedListener {
-
     companion object {
         private val TAG = AuthenticationActivity::class.qualifiedName
     }
@@ -39,7 +38,7 @@ class AuthenticationActivity : AppCompatActivity(), GoogleApiClient.OnConnection
                 .requestEmail()
                 .build()
         googleApiClient = GoogleApiClient.Builder(this)
-                .enableAutoManage(this /* FragmentActivity */, this /* OnConnectionFailedListener */)
+                .enableAutoManage(this, this)
                 .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
                 .build()
 
@@ -96,5 +95,4 @@ class AuthenticationActivity : AppCompatActivity(), GoogleApiClient.OnConnection
         Log.d(TAG, "onConnectionFailed:" + connectionResult)
         Toast.makeText(this, "Google Play Services error.", Toast.LENGTH_SHORT).show()
     }
-
 }
