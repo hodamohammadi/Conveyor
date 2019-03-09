@@ -22,6 +22,7 @@ class FirebaseHelper {
         private val firebaseAuth: FirebaseAuth = FirebaseAuth.getInstance()
         private val firebaseDatabase: FirebaseDatabase = FirebaseDatabase.getInstance()
         private val firebaseUser: FirebaseUser? = firebaseAuth.currentUser
+        private var currentThreadId: String? = null
 
         fun isUserAuthenticated(): Boolean {
             return firebaseUser != null
@@ -34,7 +35,7 @@ class FirebaseHelper {
 
         fun sendMessage(messageInput: String): IMessage {
             val messageReference: DatabaseReference =
-                    getThreadsDatabase().child(getCurrentThreadId())
+                    getThreadsDatabase().child(getCurrentThreadId()!!)
             val messageKey: String? = messageReference.push().key
             val message = DefaultMessage(messageKey!!, messageInput, Date(), getCurrentUser())
             messageReference.child(messageKey).setValue(message)
@@ -56,8 +57,12 @@ class FirebaseHelper {
             return databaseReference
         }
 
-        private fun getCurrentThreadId(): String {
-            return "thread_id_placeholder"
+        private fun getCurrentThreadId(): String? {
+            return currentThreadId
+        }
+
+        fun setCurrentThreadId(threadId: String) {
+            this.currentThreadId = threadId
         }
     }
 }
