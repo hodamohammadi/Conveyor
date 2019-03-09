@@ -5,11 +5,9 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import com.hodamohammadi.conveyor.utils.FirebaseHelper
 import com.hodamohammadi.conveyor.R
 import com.hodamohammadi.conveyor.utils.AppUtils
-import com.stfalcon.chatkit.commons.ImageLoader
 import com.stfalcon.chatkit.commons.models.IMessage
 import com.stfalcon.chatkit.messages.MessageInput
 import com.stfalcon.chatkit.messages.MessagesListAdapter

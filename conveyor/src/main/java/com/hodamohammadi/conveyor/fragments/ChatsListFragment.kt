@@ -36,7 +36,7 @@ class ChatsListFragment : Fragment(), DialogsListAdapter.OnDialogClickListener<I
 
     fun initAdapater() {
         dialogListAdapter = DialogsListAdapter(AppUtils.CustomImageLoader)
-        //dialogListAdapter.setItems()
+        dialogListAdapter.setItems(FirebaseHelper.getThreadsList())
         dialogListAdapter.setOnDialogClickListener(this)
         dialogListAdapter.setOnDialogLongClickListener(this)
 

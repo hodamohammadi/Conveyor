@@ -10,6 +10,7 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.hodamohammadi.conveyor.models.DefaultMessage
 import com.hodamohammadi.conveyor.models.DefaultUser
+import com.stfalcon.chatkit.commons.models.IDialog
 import com.stfalcon.chatkit.commons.models.IMessage
 import java.util.Date
 
@@ -22,24 +23,28 @@ class FirebaseHelper {
         private val firebaseAuth: FirebaseAuth = FirebaseAuth.getInstance()
         private val firebaseDatabase: FirebaseDatabase = FirebaseDatabase.getInstance()
         private val firebaseUser: FirebaseUser? = firebaseAuth.currentUser
-        private var currentThreadId: String? = null
 
         fun isUserAuthenticated(): Boolean {
             return firebaseUser != null
         }
 
         fun getCurrentUser(): DefaultUser {
-            return DefaultUser(firebaseUser!!.uid, firebaseUser.displayName,
-                    firebaseUser.photoUrl.toString())
+                return DefaultUser(firebaseUser!!.uid, firebaseUser.displayName,
+                        firebaseUser.photoUrl.toString(), getThreadsIds())
         }
 
         fun sendMessage(messageInput: String): IMessage {
             val messageReference: DatabaseReference =
-                    getThreadsDatabase().child(getCurrentThreadId()!!)
+                    getThreadsDatabase().child("place_holder")
             val messageKey: String? = messageReference.push().key
             val message = DefaultMessage(messageKey!!, messageInput, Date(), getCurrentUser())
             messageReference.child(messageKey).setValue(message)
             return message
+        }
+
+        fun getThreadsList(): List<IDialog<IMessage>> {
+            //TODO: implement.
+            return ArrayList()
         }
 
         private fun getThreadsDatabase(): DatabaseReference {
@@ -57,12 +62,10 @@ class FirebaseHelper {
             return databaseReference
         }
 
-        private fun getCurrentThreadId(): String? {
-            return currentThreadId
+        private fun getThreadsIds(): List<String> {
+            //TODO: implement.
+            return ArrayList()
         }
 
-        fun setCurrentThreadId(threadId: String) {
-            this.currentThreadId = threadId
-        }
     }
 }

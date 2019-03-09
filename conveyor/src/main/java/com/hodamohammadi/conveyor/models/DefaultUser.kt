@@ -9,7 +9,8 @@ import java.io.Serializable
 data class DefaultUser(
     val userId: String,
     val userName: String?,
-    val userAvatar: String?
+    val userAvatar: String?,
+    val threadsIds: List<String>
 ): Serializable, IUser {
 
     override fun getId(): String {
