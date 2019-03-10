@@ -9,7 +9,6 @@ import android.view.ViewGroup
 import com.hodamohammadi.conveyor.R
 import com.hodamohammadi.conveyor.utils.AppUtils
 import com.hodamohammadi.conveyor.utils.FirebaseHelper
-import com.hodamohammadi.conveyor.utils.FirebaseHelper.Companion.sendThread
 import com.hodamohammadi.conveyor.viewmodels.ChatViewModel
 import com.hodamohammadi.conveyor.viewmodels.ViewModelFactory
 import com.stfalcon.chatkit.commons.models.IDialog

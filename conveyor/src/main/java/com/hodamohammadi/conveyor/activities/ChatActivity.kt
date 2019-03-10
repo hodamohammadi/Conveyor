@@ -4,7 +4,6 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import com.hodamohammadi.conveyor.R
 import com.hodamohammadi.conveyor.fragments.ChatsListFragment
-import com.hodamohammadi.conveyor.fragments.SingleChatFragment
 import com.hodamohammadi.conveyor.utils.FirebaseHelper
 
 /**
