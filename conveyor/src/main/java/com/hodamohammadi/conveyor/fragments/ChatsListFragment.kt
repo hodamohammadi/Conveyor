@@ -1,5 +1,6 @@
 package com.hodamohammadi.conveyor.fragments
 
+import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
@@ -8,6 +9,8 @@ import android.view.ViewGroup
 import com.hodamohammadi.conveyor.R
 import com.hodamohammadi.conveyor.utils.AppUtils
 import com.hodamohammadi.conveyor.utils.FirebaseHelper
+import com.hodamohammadi.conveyor.viewmodels.ChatViewModel
+import com.hodamohammadi.conveyor.viewmodels.ViewModelFactory
 import com.stfalcon.chatkit.commons.models.IDialog
 import com.stfalcon.chatkit.commons.models.IMessage
 import com.stfalcon.chatkit.dialogs.DialogsListAdapter
@@ -20,6 +23,7 @@ class ChatsListFragment : Fragment(), DialogsListAdapter.OnDialogClickListener<I
         DialogsListAdapter.OnDialogLongClickListener<IDialog<IMessage>> {
 
     private lateinit var dialogListAdapter: DialogsListAdapter<IDialog<IMessage>>
+    private lateinit var chatViewModel: ChatViewModel
 
     override fun onCreateView(
             inflater: LayoutInflater,
@@ -31,12 +35,15 @@ class ChatsListFragment : Fragment(), DialogsListAdapter.OnDialogClickListener<I
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val viewModelFactory = ViewModelFactory.factory
+        chatViewModel = ViewModelProviders.of(requireActivity(), viewModelFactory)
+                .get(ChatViewModel::class.java)
         initAdapater()
     }
 
     fun initAdapater() {
         dialogListAdapter = DialogsListAdapter(AppUtils.CustomImageLoader)
-        dialogListAdapter.setItems(FirebaseHelper.getThreadsList())
+        dialogListAdapter.setItems(FirebaseHelper.getCurrentUser().threads)
         dialogListAdapter.setOnDialogClickListener(this)
         dialogListAdapter.setOnDialogLongClickListener(this)
 
@@ -44,7 +51,8 @@ class ChatsListFragment : Fragment(), DialogsListAdapter.OnDialogClickListener<I
     }
 
     override fun onDialogClick(dialog: IDialog<IMessage>?) {
-        FirebaseHelper.setCurrentThreadId("thread_id_placeholder")
+        chatViewModel.threadId = dialog!!.id
+
     }
 
     override fun onDialogLongClick(dialog: IDialog<IMessage>?) {
