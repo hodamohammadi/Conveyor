@@ -3,6 +3,7 @@ package com.hodamohammadi.conveyor.activities
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import com.hodamohammadi.conveyor.R
+import com.hodamohammadi.conveyor.fragments.ChatsListFragment
 import com.hodamohammadi.conveyor.fragments.SingleChatFragment
 import com.hodamohammadi.conveyor.utils.FirebaseHelper
 
@@ -18,7 +19,7 @@ class ChatActivity : AppCompatActivity() {
         if (FirebaseHelper.isUserAuthenticated()) {
             supportFragmentManager
                     .beginTransaction()
-                    .add(R.id.chat_container, SingleChatFragment())
+                    .add(R.id.chat_container, ChatsListFragment())
                     .commit()
         }
     }
