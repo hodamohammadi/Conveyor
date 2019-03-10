@@ -24,8 +24,7 @@ class SingleChatFragment : Fragment(), MessageInput.InputListener, MessageInput.
 
     private lateinit var messagesAdapter: MessagesListAdapter<IMessage>
     private lateinit var chatViewModel: ChatViewModel
-
-
+    
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -40,8 +39,7 @@ class SingleChatFragment : Fragment(), MessageInput.InputListener, MessageInput.
         input.setTypingListener(this)
         input.setAttachmentsListener(this)
 
-        val viewModelFactory = ViewModelFactory.factory
-        chatViewModel = ViewModelProviders.of(requireActivity(), viewModelFactory)
+        chatViewModel = ViewModelProviders.of(requireActivity(), ViewModelFactory)
                 .get(ChatViewModel::class.java)
 
         initAdapter()
