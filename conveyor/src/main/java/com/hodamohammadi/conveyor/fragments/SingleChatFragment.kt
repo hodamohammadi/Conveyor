@@ -40,8 +40,7 @@ class SingleChatFragment : Fragment(), MessageInput.InputListener, MessageInput.
         input.setTypingListener(this)
         input.setAttachmentsListener(this)
 
-        val viewModelFactory = ViewModelFactory.factory
-        chatViewModel = ViewModelProviders.of(requireActivity(), viewModelFactory)
+        chatViewModel = ViewModelProviders.of(requireActivity(), ViewModelFactory)
                 .get(ChatViewModel::class.java)
 
         initAdapter()
