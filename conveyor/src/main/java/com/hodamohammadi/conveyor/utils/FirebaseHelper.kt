@@ -13,6 +13,7 @@ import com.hodamohammadi.conveyor.models.DefaultMessage
 import com.hodamohammadi.conveyor.models.DefaultUser
 import com.stfalcon.chatkit.commons.models.IDialog
 import com.stfalcon.chatkit.commons.models.IMessage
+import com.stfalcon.chatkit.commons.models.IUser
 import java.util.Date
 
 /**
@@ -73,22 +74,24 @@ class FirebaseHelper {
             return databaseReference
         }
 
-        private fun getUserThreads(): List<IDialog<IMessage>> {
-            val threads: MutableList<IDialog<IMessage>> = mutableListOf()
+        private fun getUserThreads(): List<DefaultDialog> {
+            val threads: MutableList<DefaultDialog> = mutableListOf()
             val messageReference: DatabaseReference =
-                    getUsersDatabase().child(getCurrentUser().id)
+                    getUsersDatabase().child(firebaseAuth.currentUser!!.uid)
                             .child(FirebaseConstants.USER_THREADS)
 
-            messageReference.addListenerForSingleValueEvent(object : ValueEventListener {
-                        override fun onDataChange(dataSnapshot: DataSnapshot) {
-                            for (childDataSnapshot: DataSnapshot in dataSnapshot.children) {
-                                threads.add(childDataSnapshot.getValue(DefaultDialog::class.java)!!)
-                            }
-                        }
-
-                        override fun onCancelled(databaseError: DatabaseError) {
-                        }
-                    })
+            // TODO: get user's threads list
+//            messageReference.addListenerForSingleValueEvent(object : ValueEventListener {
+//                        override fun onDataChange(dataSnapshot: DataSnapshot) {
+//                            for (childDataSnapshot: DataSnapshot in dataSnapshot.children) {
+//                                childDataSnapshot.getValue(DefaultDialog::class.java)!!
+//                                threads.add(childDataSnapshot.getValue(DefaultDialog::class.java)!!)
+//                            }
+//                        }
+//
+//                        override fun onCancelled(databaseError: DatabaseError) {
+//                        }
+//                    })
 
             return threads
         }

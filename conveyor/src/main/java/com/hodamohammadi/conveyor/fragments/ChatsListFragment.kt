@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import com.hodamohammadi.conveyor.R
 import com.hodamohammadi.conveyor.utils.AppUtils
 import com.hodamohammadi.conveyor.utils.FirebaseHelper
+import com.hodamohammadi.conveyor.utils.FirebaseHelper.Companion.sendThread
 import com.hodamohammadi.conveyor.viewmodels.ChatViewModel
 import com.hodamohammadi.conveyor.viewmodels.ViewModelFactory
 import com.stfalcon.chatkit.commons.models.IDialog
@@ -35,15 +36,15 @@ class ChatsListFragment : Fragment(), DialogsListAdapter.OnDialogClickListener<I
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val viewModelFactory = ViewModelFactory.factory
-        chatViewModel = ViewModelProviders.of(requireActivity(), viewModelFactory)
+        chatViewModel = ViewModelProviders.of(requireActivity(), ViewModelFactory)
                 .get(ChatViewModel::class.java)
+
         initAdapater()
     }
 
     fun initAdapater() {
         dialogListAdapter = DialogsListAdapter(AppUtils.CustomImageLoader)
-        dialogListAdapter.setItems(FirebaseHelper.getCurrentUser().threads)
+        dialogListAdapter.setItems(FirebaseHelper.getCurrentUser().dialogs)
         dialogListAdapter.setOnDialogClickListener(this)
         dialogListAdapter.setOnDialogLongClickListener(this)
 
@@ -52,10 +53,11 @@ class ChatsListFragment : Fragment(), DialogsListAdapter.OnDialogClickListener<I
 
     override fun onDialogClick(dialog: IDialog<IMessage>?) {
         chatViewModel.threadId = dialog!!.id
+        // TODO: Launch SingleChatFragment
 
     }
 
     override fun onDialogLongClick(dialog: IDialog<IMessage>?) {
-        //TODO: Implement chat delete/edits
+        // TODO: Implement chat delete/edits
     }
 }
