@@ -9,12 +9,12 @@ import java.io.Serializable
  * Default model for a Dialog object.
  */
 class DefaultDialog(
-    val dialogImage: String,
-    val dialogUnreadCount: Int,
-    val dialogId: String,
-    val dialogUsers: MutableList<IUser>,
-    var dialogLastMessage: IMessage?,
-    val dialogNickname: String
+    val dialogImage: String = "",
+    val dialogUnreadCount: Int = 0,
+    val dialogId: String = "",
+    val dialogUsers: MutableList<DefaultUser> = mutableListOf(),
+    var dialogLastMessage: IMessage? = null,
+    val dialogNickname: String = ""
 ): Serializable, IDialog<IMessage> {
     override fun getDialogPhoto(): String {
         return dialogImage
@@ -28,7 +28,7 @@ class DefaultDialog(
         return dialogId
     }
 
-    override fun getUsers(): MutableList<IUser> {
+    override fun getUsers(): MutableList<DefaultUser> {
         return dialogUsers
     }
 
