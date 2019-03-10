@@ -9,7 +9,7 @@ platform :android do
     danger
   end
 
-  desc "Bumpers version number and deploys to app center"
+  desc "Bumps version number and deploys to app center"
   lane :deploy do
     android_set_version_code(
       version_code: ENV["TRAVIS_BUILD_NUMBER"],

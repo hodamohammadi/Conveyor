@@ -25,7 +25,7 @@ Used to check that a build passes all necessary checks. runs `clean assembleDebu
 ```
 fastlane android deploy
 ```
-Bumpers version number and deploys to app center
+Bumps version number and deploys to app center
 
 ----
 
