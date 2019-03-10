@@ -124,7 +124,7 @@ empty-blocks:
     active: true
     allowedExceptionNameRegex: "^(_|(ignore|expected).*)"
   EmptyClassBlock:
-    active: true
+    active: false
   EmptyDefaultConstructor:
     active: true
   EmptyDoWhileBlock:
@@ -418,7 +418,7 @@ style:
     includeLineWrapping: false
   ForbiddenComment:
     active: true
-    values: 'TODO:,FIXME:,STOPSHIP:'
+    values: 'FIXME:,STOPSHIP:'
   ForbiddenImport:
     active: false
     imports: ''
