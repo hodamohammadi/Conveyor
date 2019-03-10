@@ -3,7 +3,6 @@ package com.hodamohammadi.conveyor.viewmodels
 import android.arch.lifecycle.ViewModel
 import android.arch.lifecycle.ViewModelProvider
 
-
 /**
  * singleton of view model factory to create instances of view models.
  */
@@ -27,5 +26,4 @@ class ViewModelFactory private constructor(): ViewModelProvider.Factory {
             throw IllegalArgumentException("ViewModel Not Found")
         }
     }
-
 }
