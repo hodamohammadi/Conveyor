@@ -3,9 +3,9 @@ update_fastlane
 default_platform(:android)
 
 platform :android do
-  desc "Used to check that a build passes all necessary checks. runs `clean assembleDebug test ktlintCheck lintDebug` "
+  desc "Used to check that a build passes all necessary checks. runs `clean assembleDebug test detekt lintDebug` "
   lane :checks do
-    gradle(task: "clean assembleDebug test ktlintCheck lintDebug")
+    gradle(task: "clean assembleDebug test detekt lintDebug")
     danger
   end
 
