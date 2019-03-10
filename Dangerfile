@@ -13,7 +13,7 @@ else
 
     # Kotlin Lint
     checkstyle_format.base_path = Dir.pwd
-    checkstyle_format.report 'conveyor/build/reports/ktlint/ktlintMainSourceSetCheck.xml'
+    checkstyle_format.report 'conveyor/build/reports/detekt/detekt.xml'
 end
 
 # Warn when there is a big PR
