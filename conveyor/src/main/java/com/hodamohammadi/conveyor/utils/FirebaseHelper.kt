@@ -8,6 +8,7 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import com.hodamohammadi.conveyor.models.DefaultDialog
 import com.hodamohammadi.conveyor.models.DefaultMessage
 import com.hodamohammadi.conveyor.models.DefaultUser
 import com.stfalcon.chatkit.commons.models.IDialog
@@ -30,21 +31,16 @@ class FirebaseHelper {
         fun getCurrentUser(): DefaultUser {
             val firebaseUser: FirebaseUser? = firebaseAuth.currentUser
             return DefaultUser(firebaseUser!!.uid, firebaseUser.displayName,
-                    firebaseUser.photoUrl.toString(), getThreadsIds())
+                    firebaseUser.photoUrl.toString(), getUserThreads())
         }
 
-        fun sendMessage(messageInput: String): IMessage {
+        fun sendMessage(messageInput: String, threadId: String): IMessage {
             val messageReference: DatabaseReference =
-                    getThreadsDatabase().child("place_holder")
+                    getThreadsDatabase().child(threadId)
             val messageKey: String? = messageReference.push().key
             val message = DefaultMessage(messageKey!!, messageInput, Date(), getCurrentUser())
             messageReference.child(messageKey).setValue(message)
             return message
-        }
-
-        fun getThreadsList(): List<IDialog<IMessage>> {
-            //TODO: implement.
-            return ArrayList()
         }
 
         private fun getThreadsDatabase(): DatabaseReference {
@@ -62,9 +58,39 @@ class FirebaseHelper {
             return databaseReference
         }
 
-        private fun getThreadsIds(): List<String> {
-            //TODO: implement.
-            return ArrayList()
+        private fun getUsersDatabase(): DatabaseReference {
+            val databaseReference: DatabaseReference =
+                    firebaseDatabase.getReference(FirebaseConstants.USERS_DATABASE)
+            databaseReference.addValueEventListener(object : ValueEventListener {
+                override fun onDataChange(dataSnapshot: DataSnapshot) {
+                    Log.d(TAG, "successful database reference")
+                }
+
+                override fun onCancelled(databaseError: DatabaseError) {
+                    Log.e(TAG, databaseError.message)
+                }
+            })
+            return databaseReference
+        }
+
+        private fun getUserThreads(): List<IDialog<IMessage>> {
+            val threads: MutableList<IDialog<IMessage>> = mutableListOf()
+            val messageReference: DatabaseReference =
+                    getUsersDatabase().child(getCurrentUser().id)
+                            .child(FirebaseConstants.USER_THREADS)
+
+            messageReference.addListenerForSingleValueEvent(object : ValueEventListener {
+                        override fun onDataChange(dataSnapshot: DataSnapshot) {
+                            for (childDataSnapshot: DataSnapshot in dataSnapshot.children) {
+                                threads.add(childDataSnapshot.getValue(DefaultDialog::class.java)!!)
+                            }
+                        }
+
+                        override fun onCancelled(databaseError: DatabaseError) {
+                        }
+                    })
+
+            return threads
         }
 
     }
