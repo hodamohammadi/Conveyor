@@ -1,7 +1,6 @@
 package com.hodamohammadi.conveyor.models
 
 import com.stfalcon.chatkit.commons.models.IMessage
-import com.stfalcon.chatkit.commons.models.IUser
 import java.io.Serializable
 import java.util.Date
 

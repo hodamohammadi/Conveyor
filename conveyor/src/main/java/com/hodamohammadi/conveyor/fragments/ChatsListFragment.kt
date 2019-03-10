@@ -26,9 +26,9 @@ class ChatsListFragment : Fragment(), DialogsListAdapter.OnDialogClickListener<I
     private lateinit var chatViewModel: ChatViewModel
 
     override fun onCreateView(
-            inflater: LayoutInflater,
-            container: ViewGroup?,
-            savedInstanceState: Bundle?
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View {
         return inflater.inflate(R.layout.chats_list_fragment, container, false)
     }
@@ -53,7 +53,6 @@ class ChatsListFragment : Fragment(), DialogsListAdapter.OnDialogClickListener<I
     override fun onDialogClick(dialog: IDialog<IMessage>?) {
         chatViewModel.threadId = dialog!!.id
         // TODO: Launch SingleChatFragment
-
     }
 
     override fun onDialogLongClick(dialog: IDialog<IMessage>?) {
