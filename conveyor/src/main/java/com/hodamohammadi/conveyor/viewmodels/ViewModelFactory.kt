@@ -9,7 +9,15 @@ import android.arch.lifecycle.ViewModelProvider
  */
 class ViewModelFactory private constructor(): ViewModelProvider.Factory {
     companion object {
-        val INSTANCE = ViewModelFactory()
+        private lateinit var INSTANCE: ViewModelFactory
+
+        val factory: ViewModelFactory
+            get() {
+                if (INSTANCE == null) {
+                    INSTANCE = ViewModelFactory()
+                }
+                return INSTANCE
+            }
     }
 
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
