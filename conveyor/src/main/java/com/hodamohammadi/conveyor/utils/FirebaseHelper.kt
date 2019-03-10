@@ -21,13 +21,13 @@ class FirebaseHelper {
         private val TAG = FirebaseHelper::class.qualifiedName
         private val firebaseAuth: FirebaseAuth = FirebaseAuth.getInstance()
         private val firebaseDatabase: FirebaseDatabase = FirebaseDatabase.getInstance()
-        private val firebaseUser: FirebaseUser? = firebaseAuth.currentUser
 
         fun isUserAuthenticated(): Boolean {
-            return firebaseUser != null
+            return firebaseAuth.currentUser != null
         }
 
         fun getCurrentUser(): DefaultUser {
+            val firebaseUser: FirebaseUser? = firebaseAuth.currentUser
             return DefaultUser(firebaseUser!!.uid, firebaseUser.displayName,
                     firebaseUser.photoUrl.toString())
         }
