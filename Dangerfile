@@ -3,7 +3,18 @@
 declared_trivial = github.pr_title.include? "#trivial"
 
 # Make it more obvious that a PR is a work in progress and shouldn't be merged yet
-warn("PR is classed as Work in Progress") if github.pr_title.include? "[WIP]"
+if github.pr_title.include? "[WIP]"
+    warn("PR is classed as Work in Progress - DO NOT MERGE")
+else
+    # Android Lint
+    android_lint.skip_gradle_task = true
+    android_lint.report_file = "conveyor/build/reports/lint-results-debug.xml"
+    android_lint.lint
+
+    # Kotlin Lint
+    checkstyle_format.base_path = Dir.pwd
+    checkstyle_format.report 'conveyor/build/reports/ktlint/ktlintMainSourceSetCheck.xml'
+end
 
 # Warn when there is a big PR
 warn("Big PR") if git.lines_of_code > 500
@@ -13,12 +24,3 @@ warn("Big PR") if git.lines_of_code > 500
 if github.pr_body.length < 5
     warn("Please provide a summary in the Pull Request description")
 end
-
-# Android Lint
-android_lint.skip_gradle_task = true
-android_lint.report_file = "conveyor/build/reports/lint-results-debug.xml"
-android_lint.lint
-
-# Kotlin Lint
-checkstyle_format.base_path = Dir.pwd
-checkstyle_format.report 'conveyor/build/reports/ktlint/ktlintMainSourceSetCheck.xml'

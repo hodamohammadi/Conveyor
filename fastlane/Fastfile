@@ -3,13 +3,13 @@ update_fastlane
 default_platform(:android)
 
 platform :android do
-  desc "Runs checks for the build"
+  desc "Used to check that a build passes all necessary checks. runs `clean assembleDebug test ktlintCheck lintDebug` "
   lane :checks do
     gradle(task: "clean assembleDebug test ktlintCheck lintDebug")
     danger
   end
 
-  desc "Deploy to AppCenter"
+  desc "Bumps version number and deploys to app center"
   lane :deploy do
     android_set_version_code(
       version_code: ENV["TRAVIS_BUILD_NUMBER"],

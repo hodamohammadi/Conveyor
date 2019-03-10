@@ -20,7 +20,12 @@ or alternatively using `brew cask install fastlane`
 ```
 fastlane android checks
 ```
-Runs checks for the build
+Used to check that a build passes all necessary checks. runs `clean assembleDebug test ktlintCheck lintDebug` 
+### android deploy
+```
+fastlane android deploy
+```
+Bumps version number and deploys to app center
 
 ----
 
