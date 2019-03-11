@@ -1,5 +1,6 @@
 package com.hodamohammadi.conveyor.fragments
 
+import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
@@ -8,6 +9,8 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import com.hodamohammadi.conveyor.utils.FirebaseHelper
 import com.hodamohammadi.conveyor.R
+import com.hodamohammadi.conveyor.viewmodels.ViewModelFactory
+import com.hodamohammadi.conveyor.viewmodels.ChatViewModel
 import com.stfalcon.chatkit.commons.ImageLoader
 import com.stfalcon.chatkit.commons.models.IMessage
 import com.stfalcon.chatkit.messages.MessageInput
@@ -21,6 +24,7 @@ class SingleChatFragment : Fragment(), MessageInput.InputListener, MessageInput.
         MessageInput.TypingListener {
 
     private lateinit var messagesAdapter: MessagesListAdapter<IMessage>
+    private lateinit var chatViewModel: ChatViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -35,6 +39,10 @@ class SingleChatFragment : Fragment(), MessageInput.InputListener, MessageInput.
         input.setInputListener(this)
         input.setTypingListener(this)
         input.setAttachmentsListener(this)
+
+        chatViewModel = ViewModelProviders.of(requireActivity(), ViewModelFactory)
+                .get(ChatViewModel::class.java)
+
         initAdapter()
     }
 
