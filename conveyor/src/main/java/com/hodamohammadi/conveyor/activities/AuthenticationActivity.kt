@@ -21,8 +21,8 @@ import kotlinx.android.synthetic.main.authentication_activity.*
 class AuthenticationActivity : AppCompatActivity(), GoogleApiClient.OnConnectionFailedListener {
     companion object {
         private val TAG = AuthenticationActivity::class.qualifiedName
+        private const val rcSignIn = 9001
     }
-    private val RC_SIGN_IN = 9001
 
     private var googleApiClient: GoogleApiClient? = null
     private var firebaseAuth: FirebaseAuth? = null
@@ -48,14 +48,14 @@ class AuthenticationActivity : AppCompatActivity(), GoogleApiClient.OnConnection
 
     private fun googleLogin() {
         val signInIntent = Auth.GoogleSignInApi.getSignInIntent(googleApiClient)
-        startActivityForResult(signInIntent, RC_SIGN_IN)
+        startActivityForResult(signInIntent, rcSignIn)
     }
 
-    public override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent) {
+    public override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
         // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);
-        if (requestCode == RC_SIGN_IN) {
+        if (requestCode == rcSignIn) {
             val result = Auth.GoogleSignInApi.getSignInResultFromIntent(data)
             if (result.isSuccess) {
                 // Google Sign In was successful, authenticate with Firebase

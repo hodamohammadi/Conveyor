@@ -17,7 +17,7 @@ import java.util.Date
 /**
  * Helper class for Firebase services.
  */
-class FirebaseHelper {
+class FirebaseHelper private constructor() {
     companion object {
         private val TAG = FirebaseHelper::class.qualifiedName
         private val firebaseAuth: FirebaseAuth = FirebaseAuth.getInstance()
