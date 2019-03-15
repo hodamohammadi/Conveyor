@@ -52,6 +52,7 @@ class SingleChatFragment : Fragment(), MessageInput.InputListener, MessageInput.
     }
 
     override fun onSubmit(input: CharSequence): Boolean {
+        chatViewModel.threadId = "thread_id_placeholder"
         val message: IMessage =
                 FirebaseHelper.sendMessage(input.toString(), chatViewModel.threadId!!)
         messagesAdapter.addToStart(message, true)

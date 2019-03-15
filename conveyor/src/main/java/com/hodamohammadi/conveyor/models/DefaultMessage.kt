@@ -1,6 +1,7 @@
 package com.hodamohammadi.conveyor.models
 
 import com.stfalcon.chatkit.commons.models.IMessage
+import com.stfalcon.chatkit.commons.models.IUser
 import java.io.Serializable
 import java.util.Date
 
@@ -8,25 +9,24 @@ import java.util.Date
  * Default model for a single message.
  */
 data class DefaultMessage(
-    val messageId: String = "",
-    val messageText: String = "",
-    val messageCreatedAt: Date = Date(),
-    val messageUser: DefaultUser = DefaultUser()
-): Serializable, IMessage {
+    @JvmField val id: String = "",
+    @JvmField val text: String = "",
+    @JvmField val createdAt: Date = Date(),
+    @JvmField val user: DefaultUser = DefaultUser()) : Serializable, IMessage {
 
     override fun getId(): String {
-        return messageId
+        return id
     }
 
     override fun getText(): String {
-        return messageText
+        return text
     }
 
     override fun getCreatedAt(): Date {
-        return messageCreatedAt
+        return createdAt
     }
 
-    override fun getUser(): DefaultUser {
-        return messageUser
+    override fun getUser(): IUser {
+        return user
     }
 }
