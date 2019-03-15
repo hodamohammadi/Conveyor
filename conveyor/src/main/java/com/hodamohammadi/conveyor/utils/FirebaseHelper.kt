@@ -1,5 +1,6 @@
 package com.hodamohammadi.conveyor.utils
 
+import android.arch.lifecycle.MutableLiveData
 import android.util.Log
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
@@ -11,6 +12,7 @@ import com.google.firebase.database.ValueEventListener
 import com.hodamohammadi.conveyor.models.DefaultDialog
 import com.hodamohammadi.conveyor.models.DefaultMessage
 import com.hodamohammadi.conveyor.models.DefaultUser
+import com.hodamohammadi.conveyor.services.Resource
 import com.stfalcon.chatkit.commons.models.IMessage
 import java.util.Date
 
@@ -22,15 +24,19 @@ class FirebaseHelper private constructor() {
         private val TAG = FirebaseHelper::class.qualifiedName
         private val firebaseAuth: FirebaseAuth = FirebaseAuth.getInstance()
         private val firebaseDatabase: FirebaseDatabase = FirebaseDatabase.getInstance()
+        private var localUser: DefaultUser? = null
 
         fun isUserAuthenticated(): Boolean {
             return firebaseAuth.currentUser != null
         }
 
         fun getCurrentUser(): DefaultUser {
-            val firebaseUser: FirebaseUser? = firebaseAuth.currentUser
-            return DefaultUser(firebaseUser!!.uid, firebaseUser.displayName,
-                    firebaseUser.photoUrl.toString(), getUserThreads())
+            if (localUser == null) {
+                val firebaseUser: FirebaseUser? = firebaseAuth.currentUser
+                localUser = DefaultUser(firebaseUser!!.uid, firebaseUser.displayName,
+                        firebaseUser.photoUrl.toString(), null)
+            }
+            return localUser!!
         }
 
         fun sendMessage(messageInput: String, threadId: String): IMessage {
@@ -72,26 +78,29 @@ class FirebaseHelper private constructor() {
             return databaseReference
         }
 
-        private fun getUserThreads(): List<DefaultDialog> {
+        fun getUserThreads(): MutableLiveData<Resource<List<DefaultDialog>>> {
+            val data = MutableLiveData<Resource<List<DefaultDialog>>>()
+
             val threads: MutableList<DefaultDialog> = mutableListOf()
             val messageReference: DatabaseReference =
                     getUsersDatabase().child(firebaseAuth.currentUser!!.uid)
                             .child(FirebaseConstants.USER_THREADS)
 
-            // TODO: get user's threads list
-//            messageReference.addListenerForSingleValueEvent(object : ValueEventListener {
-//                        override fun onDataChange(dataSnapshot: DataSnapshot) {
-//                            for (childDataSnapshot: DataSnapshot in dataSnapshot.children) {
-//                                childDataSnapshot.getValue(DefaultDialog::class.java)!!
-//                                threads.add(childDataSnapshot.getValue(DefaultDialog::class.java)!!)
-//                            }
-//                        }
-//
-//                        override fun onCancelled(databaseError: DatabaseError) {
-//                        }
-//                    })
+            messageReference.addListenerForSingleValueEvent(object : ValueEventListener {
+                        override fun onDataChange(dataSnapshot: DataSnapshot) {
+                            for (childDataSnapshot: DataSnapshot in dataSnapshot.children) {
+                                childDataSnapshot.getValue(DefaultDialog::class.java)!!
+                                threads.add(childDataSnapshot.getValue(DefaultDialog::class.java)!!)
+                            }
+                            data.value = Resource.success(threads)
+                        }
 
-            return threads
+                        override fun onCancelled(databaseError: DatabaseError) {
+                            data.value = Resource.error(null)
+                        }
+                    })
+
+            return data
         }
     }
 }

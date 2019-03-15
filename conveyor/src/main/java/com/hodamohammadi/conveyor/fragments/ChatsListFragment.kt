@@ -1,14 +1,18 @@
 package com.hodamohammadi.conveyor.fragments
 
+import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.hodamohammadi.conveyor.R
+import com.hodamohammadi.conveyor.models.DefaultDialog
+import com.hodamohammadi.conveyor.services.BaseResourceObserver
+import com.hodamohammadi.conveyor.services.Resource
 import com.hodamohammadi.conveyor.utils.AppUtils
-import com.hodamohammadi.conveyor.utils.FirebaseHelper
 import com.hodamohammadi.conveyor.viewmodels.ChatViewModel
 import com.hodamohammadi.conveyor.viewmodels.ViewModelFactory
 import com.stfalcon.chatkit.commons.models.IDialog
@@ -21,6 +25,10 @@ import kotlinx.android.synthetic.main.chats_list_fragment.*
  */
 class ChatsListFragment : Fragment(), DialogsListAdapter.OnDialogClickListener<IDialog<IMessage>>,
         DialogsListAdapter.OnDialogLongClickListener<IDialog<IMessage>> {
+
+    companion object {
+        private val TAG = ChatsListFragment::class.qualifiedName
+    }
 
     private lateinit var dialogListAdapter: DialogsListAdapter<IDialog<IMessage>>
     private lateinit var chatViewModel: ChatViewModel
@@ -39,13 +47,20 @@ class ChatsListFragment : Fragment(), DialogsListAdapter.OnDialogClickListener<I
                 .get(ChatViewModel::class.java)
 
         initAdapater()
+
+        chatViewModel.getUserDialogsLiveData.observe(this, object : BaseResourceObserver<List<DefaultDialog>>() {
+            override fun onSuccess(data: List<DefaultDialog>?) {
+                super.onSuccess(data)
+                dialogListAdapter.setItems(data)
+            }
+        })
     }
 
     fun initAdapater() {
         dialogListAdapter = DialogsListAdapter(AppUtils.CustomImageLoader)
-        dialogListAdapter.setItems(FirebaseHelper.getCurrentUser().dialogs)
         dialogListAdapter.setOnDialogClickListener(this)
         dialogListAdapter.setOnDialogLongClickListener(this)
+        chatViewModel.getUserDialogs
 
         dialogsList.setAdapter(dialogListAdapter)
     }
