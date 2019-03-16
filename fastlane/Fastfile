@@ -5,7 +5,7 @@ default_platform(:android)
 platform :android do
   desc "Used to check that a build passes all necessary checks. runs `clean assembleDebug test detekt lintDebug` "
   lane :checks do
-    gradle(task: "clean assembleDebug test detekt lintDebug")
+    gradle(task: "clean assembleDebug test detekt lintDebug jacocoTestReport")
     danger
   end
 
@@ -15,7 +15,7 @@ platform :android do
       version_code: ENV["TRAVIS_BUILD_NUMBER"],
       gradle_file: "conveyor/build.gradle"
     )
-    gradle(task: "clean assembleDebug")
+    gradle(task: "clean assembleDebug jacocoTestReport")
     appcenter_upload(
       app_name: "Conveyor",
       group: "Collaborators,Public",
