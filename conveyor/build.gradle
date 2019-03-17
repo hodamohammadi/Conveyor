@@ -43,5 +43,5 @@ dependencies {
     implementation "com.google.firebase:firebase-storage:${versions.firebaseStorage}"
 
     // Authentication
-    implementation 'com.google.android.gms:play-services-auth:16.0.1'
+    implementation "com.google.android.gms:play-services-auth:${versions.googlePlayAuth}"
 }
