@@ -1,5 +1,6 @@
 # Conveyor
 [![Build Status](https://travis-ci.org/hodamohammadi/Conveyor.svg?branch=master)](https://travis-ci.org/hodamohammadi/Conveyor)
+[![codecov](https://codecov.io/gh/hodamohammadi/Conveyor/branch/master/graph/badge.svg)](https://codecov.io/gh/TechnionYP5777/project-name)
 [![License](http://img.shields.io/badge/license-MIT-green.svg?style=flat)](https://github.com/Instagram/hodamohammadi/Conveyor/blob/master/LICENSE)
 [![ktlint](https://img.shields.io/badge/code%20style-%E2%9D%A4-FF4081.svg)](https://ktlint.github.io/)
 
@@ -35,7 +36,8 @@ Conveyor is a simple Conversational-UI that leverages [Firebase](https://firebas
 | Fastlane                 | :white_check_mark:        |    
 | Danger                   | :white_check_mark:        |
 | Ktlint                   | :white_check_mark:        |  
-| AppCenter Deployment     | :hourglass_flowing_sand:  | 
+| CodeCov                  | :white_check_mark:        |  
+| AppCenter Deployment     | :white_check_mark:        | 
 | Firebase Setup           | :white_check_mark:        |
 | FCM                      | :white_check_mark:        |
 | Authentication           | :hourglass_flowing_sand:  |
