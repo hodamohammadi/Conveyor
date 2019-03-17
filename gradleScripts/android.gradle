@@ -1,0 +1,10 @@
+
+dependencies {
+    implementation "com.android.support:appcompat-v7:${versions.androidSupport}"
+    implementation "com.android.support:support-media-compat:${versions.androidSupport}"
+    implementation "com.android.support:support-v4:${versions.androidSupport}"
+    implementation "com.android.support:design:${versions.androidSupport}"
+    implementation "com.android.support:support-annotations:${versions.androidSupport}"
+    implementation "android.arch.lifecycle:extensions:${versions.androidArch}"
+    implementation "com.android.support.constraint:constraint-layout:${versions.androidConstraint}"
+}
