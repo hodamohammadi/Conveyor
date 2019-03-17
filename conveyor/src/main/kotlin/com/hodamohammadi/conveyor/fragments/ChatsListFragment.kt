@@ -23,10 +23,6 @@ import kotlinx.android.synthetic.main.chats_list_fragment.*
 class ChatsListFragment : Fragment(), DialogsListAdapter.OnDialogClickListener<IDialog<IMessage>>,
         DialogsListAdapter.OnDialogLongClickListener<IDialog<IMessage>> {
 
-    companion object {
-        private val TAG = ChatsListFragment::class.qualifiedName
-    }
-
     private lateinit var dialogListAdapter: DialogsListAdapter<IDialog<IMessage>>
     private lateinit var chatViewModel: ChatViewModel
 
