@@ -7,39 +7,40 @@ import java.io.Serializable
 /**
  * Default model for a Dialog object.
  */
-class DefaultDialog(
-    val dialogImage: String = "",
-    val dialogUnreadCount: Int = 0,
-    val dialogId: String = "",
-    val dialogUsers: MutableList<DefaultUser> = mutableListOf(),
-    var dialogLastMessage: IMessage? = null,
-    val dialogNickname: String = ""
+data class DefaultDialog(
+    @JvmField val dialogPhoto: String = "",
+    @JvmField val unreadCount: Int = 0,
+    @JvmField val id: String = "",
+    @JvmField val users: MutableList<DefaultUser> = mutableListOf(),
+    @JvmField var lastMessage: IMessage? = null,
+    @JvmField val dialogName: String = ""
 ): Serializable, IDialog<IMessage> {
+
     override fun getDialogPhoto(): String {
-        return dialogImage
+        return dialogPhoto
     }
 
     override fun getUnreadCount(): Int {
-        return dialogUnreadCount
+        return unreadCount
     }
 
     override fun getId(): String {
-        return dialogId
+        return id
     }
 
     override fun getUsers(): MutableList<DefaultUser> {
-        return dialogUsers
+        return users
     }
 
     override fun getLastMessage(): IMessage? {
-        return dialogLastMessage
+        return lastMessage
     }
 
     override fun setLastMessage(message: IMessage?) {
-        this.dialogLastMessage = message
+        this.lastMessage = message
     }
 
     override fun getDialogName(): String {
-        return dialogNickname
+        return dialogName
     }
 }
