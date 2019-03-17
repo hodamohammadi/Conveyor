@@ -1,17 +1,14 @@
 package com.hodamohammadi.conveyor.fragments
 
-import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.support.v4.app.Fragment
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.hodamohammadi.conveyor.R
 import com.hodamohammadi.conveyor.models.DefaultDialog
 import com.hodamohammadi.conveyor.services.BaseResourceObserver
-import com.hodamohammadi.conveyor.services.Resource
 import com.hodamohammadi.conveyor.utils.AppUtils
 import com.hodamohammadi.conveyor.viewmodels.ChatViewModel
 import com.hodamohammadi.conveyor.viewmodels.ViewModelFactory
@@ -52,6 +49,7 @@ class ChatsListFragment : Fragment(), DialogsListAdapter.OnDialogClickListener<I
             override fun onSuccess(data: List<DefaultDialog>?) {
                 super.onSuccess(data)
                 dialogListAdapter.setItems(data)
+                dialogListAdapter.notifyDataSetChanged()
             }
         })
     }
@@ -60,8 +58,7 @@ class ChatsListFragment : Fragment(), DialogsListAdapter.OnDialogClickListener<I
         dialogListAdapter = DialogsListAdapter(AppUtils.CustomImageLoader)
         dialogListAdapter.setOnDialogClickListener(this)
         dialogListAdapter.setOnDialogLongClickListener(this)
-        chatViewModel.getUserDialogs
-
+        chatViewModel.getUserDialogs.value = null
         dialogsList.setAdapter(dialogListAdapter)
     }
 
