@@ -1,6 +1,6 @@
 # Conveyor
 [![Build Status](https://travis-ci.org/hodamohammadi/Conveyor.svg?branch=master)](https://travis-ci.org/hodamohammadi/Conveyor)
-[![codecov](https://codecov.io/gh/hodamohammadi/Conveyor/branch/master/graph/badge.svg)](https://codecov.io/gh/TechnionYP5777/project-name)
+[![codecov](https://codecov.io/gh/hodamohammadi/Conveyor/branch/master/graph/badge.svg)](https://codecov.io/gh/hodamohammadi/Conveyor)
 [![License](http://img.shields.io/badge/license-MIT-green.svg?style=flat)](https://github.com/Instagram/hodamohammadi/Conveyor/blob/master/LICENSE)
 [![ktlint](https://img.shields.io/badge/code%20style-%E2%9D%A4-FF4081.svg)](https://ktlint.github.io/)
 
