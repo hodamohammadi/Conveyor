@@ -9,7 +9,7 @@ ext {
             "androidConstraint"     : "1.1.3",
 
             // Firebase
-            "firebaseCore"          : "16.0.7",
+            "firebaseCore"          : "16.0.8",
             "firebaseMessaging"     : "17.4.0",
             "firebaseAuth"          : "16.2.0",
             "firebaseDatabase"      : "16.1.0",
