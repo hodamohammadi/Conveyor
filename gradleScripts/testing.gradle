@@ -1,0 +1,6 @@
+
+dependencies {
+    testImplementation "junit:junit:${versions.junit}"
+    androidTestImplementation "com.android.support.test:runner:${versions.androidTestRunner}"
+    androidTestImplementation "com.android.support.test.espresso:espresso-core:${versions.espresso}"
+}

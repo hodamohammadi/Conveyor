@@ -1,0 +1,28 @@
+ext {
+    versions =[
+            // Kotlin
+            "kotlin"                : "1.3.21",
+
+            // Android
+            "androidSupport"        : "28.0.0",
+            "androidArch"           : "1.1.1",
+            "androidConstraint"     : "1.1.3",
+            "googlePlayAuth"        : "16.0.1",
+
+            // Firebase
+            "firebaseCore"          : "16.0.8",
+            "firebaseMessaging"     : "17.4.0",
+            "firebaseAuth"          : "16.2.0",
+            "firebaseDatabase"      : "16.1.0",
+            "firebaseStorage"       : "16.1.0",
+
+            // UI
+            "chatkit"               : "0.3.3",
+            "firebaseui"            : "4.3.1",
+
+            // Testing
+            "androidTestRunner"     : "1.0.2",
+            "espresso"              : "3.0.2",
+            "junit"                 : "4.12",
+    ]
+}
