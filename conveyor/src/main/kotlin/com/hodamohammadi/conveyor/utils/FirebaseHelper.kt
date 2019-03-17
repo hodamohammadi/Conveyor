@@ -79,17 +79,17 @@ class FirebaseHelper private constructor() {
                             .child(FirebaseConstants.USER_THREADS)
 
             // TODO: get user's threads list
-//            messageReference.addListenerForSingleValueEvent(object : ValueEventListener {
-//                        override fun onDataChange(dataSnapshot: DataSnapshot) {
-//                            for (childDataSnapshot: DataSnapshot in dataSnapshot.children) {
-//                                childDataSnapshot.getValue(DefaultDialog::class.java)!!
-//                                threads.add(childDataSnapshot.getValue(DefaultDialog::class.java)!!)
-//                            }
-//                        }
-//
-//                        override fun onCancelled(databaseError: DatabaseError) {
-//                        }
-//                    })
+            messageReference.addListenerForSingleValueEvent(object : ValueEventListener {
+                        override fun onDataChange(dataSnapshot: DataSnapshot) {
+                            for (childDataSnapshot: DataSnapshot in dataSnapshot.children) {
+                                childDataSnapshot.getValue(DefaultDialog::class.java)!!
+                                threads.add(childDataSnapshot.getValue(DefaultDialog::class.java)!!)
+                            }
+                        }
+
+                        override fun onCancelled(databaseError: DatabaseError) {
+                        }
+                    })
 
             return threads
         }

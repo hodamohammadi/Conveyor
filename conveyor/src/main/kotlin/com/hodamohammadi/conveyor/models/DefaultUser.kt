@@ -7,21 +7,20 @@ import java.io.Serializable
  * Default model for a user.
  */
 data class DefaultUser(
-    val userId: String = "",
-    val userName: String? = "",
-    val userAvatar: String? = "",
-    val dialogs: List<DefaultDialog>? = emptyList()
-): Serializable, IUser {
+    @JvmField val id: String = "",
+    @JvmField val name: String? = "",
+    @JvmField val avatar: String? = "",
+    @JvmField val dialogs: List<DefaultDialog>? = null) : Serializable, IUser {
 
     override fun getId(): String {
-        return userId
+        return id
     }
 
     override fun getName(): String? {
-        return userName
+        return name
     }
 
     override fun getAvatar(): String? {
-        return userAvatar
+        return avatar
     }
 }
