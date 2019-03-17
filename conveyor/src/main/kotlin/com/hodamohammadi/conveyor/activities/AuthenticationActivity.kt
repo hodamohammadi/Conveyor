@@ -6,7 +6,6 @@ import android.os.Bundle
 import android.widget.Toast
 import com.hodamohammadi.conveyor.R
 import com.firebase.ui.auth.AuthUI
-import com.firebase.ui.auth.ErrorCodes
 import com.firebase.ui.auth.IdpResponse
 import java.util.*
 
