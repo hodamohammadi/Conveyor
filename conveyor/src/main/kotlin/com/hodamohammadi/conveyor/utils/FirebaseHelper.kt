@@ -26,9 +26,8 @@ class FirebaseHelper private constructor() {
         private val firebaseDatabase: FirebaseDatabase = FirebaseDatabase.getInstance()
         private var localUser: DefaultUser? = null
 
-        fun isUserAuthenticated(): Boolean {
-            return firebaseAuth.currentUser != null
-        }
+        val isUserAuthenticated: Boolean
+            get() = firebaseAuth.currentUser != null
 
         fun getCurrentUser(): DefaultUser {
             if (localUser == null) {
