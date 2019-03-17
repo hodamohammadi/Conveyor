@@ -26,6 +26,11 @@ android {
         test.java.srcDirs += 'src/test/kotlin'
         androidTest.java.srcDirs += 'src/androidTest/kotlin'
     }
+
+    defaultConfig {
+        // Firebase UI supports other languages, however we will just stick with English for this application.
+        resConfigs "en"
+    }
 }
 
 dependencies {
@@ -34,6 +39,7 @@ dependencies {
     // UI
     implementation "com.github.stfalcon:chatkit:${versions.chatkit}"
     implementation "com.firebaseui:firebase-ui-auth:${versions.firebaseui}"
+    implementation "com.firebaseui:firebase-ui-auth-github:${versions.firebaseui}"
 
     // Firebase
     implementation "com.google.firebase:firebase-core:${versions.firebaseCore}"
@@ -44,4 +50,5 @@ dependencies {
 
     // Authentication
     implementation "com.google.android.gms:play-services-auth:${versions.googlePlayAuth}"
+    implementation "com.facebook.android:facebook-login:${versions.facebookAuth}"
 }

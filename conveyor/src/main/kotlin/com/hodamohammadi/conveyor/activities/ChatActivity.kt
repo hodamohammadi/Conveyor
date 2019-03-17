@@ -15,7 +15,7 @@ class ChatActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.chat_activity)
 
-        if (FirebaseHelper.isUserAuthenticated()) {
+        if (FirebaseHelper.isUserAuthenticated) {
             supportFragmentManager
                     .beginTransaction()
                     .add(R.id.chat_container, ChatsListFragment())
