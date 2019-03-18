@@ -5,8 +5,13 @@ apply from: "$rootDir/gradleScripts/testing.gradle"
 apply from: "$rootDir/gradleScripts/kotlin.gradle"
 apply from: "$rootDir/gradleScripts/android.gradle"
 
+if (file("$rootDir/signingConfigs.gradle").exists()) {
+    apply from: "$rootDir/signingConfigs.gradle"
+}
+
 android {
     compileSdkVersion 28
+
     defaultConfig {
         applicationId "com.hodamohammadi.conveyor"
         minSdkVersion 23
@@ -14,6 +19,7 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        resConfigs "en"
     }
     buildTypes {
         release {
@@ -25,11 +31,6 @@ android {
         main.java.srcDirs += 'src/main/kotlin'
         test.java.srcDirs += 'src/test/kotlin'
         androidTest.java.srcDirs += 'src/androidTest/kotlin'
-    }
-
-    defaultConfig {
-        // Firebase UI supports other languages, however we will just stick with English for this application.
-        resConfigs "en"
     }
 }
 
