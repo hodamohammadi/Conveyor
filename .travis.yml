@@ -42,9 +42,9 @@ cache:
 
 before_install:
   - openssl aes-256-cbc -K $encrypted_675e3fe85ff5_key -iv $encrypted_675e3fe85ff5_iv
-    -in conveyor.keystore.enc -out conveyor.keystore -d
-  - openssl aes-256-cbc -K $encrypted_675e3fe85ff5_key -iv $encrypted_675e3fe85ff5_iv
-    -in signingConfigs.gradle.enc -out signingConfigs.gradle -d
+    -in conveyor.keystore.enc -out conveyor.keystore -d || true
+  - openssl aes-256-cbc -K $encrypted_675e3fe85ff5_key -iv $encrypted_675e3fe85ff5_iv 
+    -in signingConfigs.gradle.enc -out signingConfigs.gradle -d || true
   - gem update --system
   - bundle install
   
