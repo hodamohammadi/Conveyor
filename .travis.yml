@@ -41,6 +41,8 @@ cache:
     - $HOME/.android/build-cache
 
 before_install:
+  - openssl aes-256-cbc -K $encrypted_9bcc98c17ce5_key -iv $encrypted_9bcc98c17ce5_iv
+    -in conveyor/conveyor.keystore.enc -out conveyor/conveyor.keystore -d
   - gem update --system
   - bundle install
   

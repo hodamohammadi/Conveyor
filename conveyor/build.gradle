@@ -7,6 +7,16 @@ apply from: "$rootDir/gradleScripts/android.gradle"
 
 android {
     compileSdkVersion 28
+
+    signingConfigs {
+        debug {
+            storeFile = file("conveyor.keystore")
+            storePassword = conveyorDebugKeyStorePassword
+            keyAlias = conveyorDebugKeyAlias
+            keyPassword = conveyorDebugKeyAliasPassword
+        }
+    }
+
     defaultConfig {
         applicationId "com.hodamohammadi.conveyor"
         minSdkVersion 23
@@ -14,8 +24,12 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        resConfigs "en"
     }
     buildTypes {
+        debug {
+            signingConfig signingConfigs.debug
+        }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
@@ -27,9 +41,12 @@ android {
         androidTest.java.srcDirs += 'src/androidTest/kotlin'
     }
 
-    defaultConfig {
-        // Firebase UI supports other languages, however we will just stick with English for this application.
-        resConfigs "en"
+    def isRunningOnTravis = System.getenv("CI") == "true"
+
+    if (isRunningOnTravis) {
+        signingConfigs.debug.storePassword = System.getenv("KEYSTORE_PASSWORD")
+        signingConfigs.debug.keyAlias = System.getenv("KEYSTORE_ALIAS")
+        signingConfigs.debug.keyPassword = System.getenv("KEYSTORE_ALIAS_PASSWORD")
     }
 }
 
