@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import com.hodamohammadi.conveyor.R
 import com.hodamohammadi.conveyor.models.DefaultDialog
 import com.hodamohammadi.conveyor.services.BaseResourceObserver
@@ -41,9 +42,15 @@ class ChatsListFragment : Fragment(), DialogsListAdapter.OnDialogClickListener<I
 
         initAdapater()
 
-        chatViewModel.getUserDialogsLiveData.observe(this, object : BaseResourceObserver<List<DefaultDialog>>() {
+        chatViewModel.getUserDialogsLiveData
+                .observe(this, object : BaseResourceObserver<List<DefaultDialog>>() {
             override fun onSuccess(data: List<DefaultDialog>?) {
                 super.onSuccess(data)
+                if (data.isNullOrEmpty()) {
+                    // TODO - Should have an empty state for this
+                    Toast.makeText(context, "No chats found!", Toast.LENGTH_SHORT)
+                            .show()
+                }
                 dialogListAdapter.setItems(data)
                 dialogListAdapter.notifyDataSetChanged()
             }

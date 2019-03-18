@@ -1,6 +1,3 @@
 <resources>
     <string name="app_name">Conveyor</string>
-
-    <!-- Placeholder texts, to be removed -->
-    <string name="google_sign_in_placeholder">Google sign in placeholder</string>
 </resources>
