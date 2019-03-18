@@ -4,7 +4,10 @@ apply from: "$rootDir/gradleScripts/jacoco.gradle"
 apply from: "$rootDir/gradleScripts/testing.gradle"
 apply from: "$rootDir/gradleScripts/kotlin.gradle"
 apply from: "$rootDir/gradleScripts/android.gradle"
-apply from: "$rootDir/gradleScripts/signingConfigs.gradle"
+
+if (file("$rootDir/signingConfigs.gradle").exists()) {
+    apply from: "$rootDir/signingConfigs.gradle"
+}
 
 android {
     compileSdkVersion 28
@@ -19,9 +22,6 @@ android {
         resConfigs "en"
     }
     buildTypes {
-        debug {
-            signingConfig signingConfigs.debug
-        }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
