@@ -1,0 +1,19 @@
+android {
+    signingConfigs {
+        debug {
+            storeFile = file("conveyor.keystore")
+        }
+    }
+
+    def isCI = System.getenv("CI") == "true"
+
+    if (isCI) {
+        signingConfigs.debug.storePassword = System.getenv("KEYSTORE_PASSWORD")
+        signingConfigs.debug.keyAlias = System.getenv("KEYSTORE_ALIAS")
+        signingConfigs.debug.keyPassword = System.getenv("KEYSTORE_ALIAS_PASSWORD")
+    } else {
+        signingConfigs.debug.storePassword = conveyorDebugKeyStorePassword
+        signingConfigs.debug.keyAlias = conveyorDebugKeyAlias
+        signingConfigs.debug.keyPassword = conveyorDebugKeyAliasPassword
+    }
+}

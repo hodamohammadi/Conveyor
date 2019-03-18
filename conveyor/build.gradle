@@ -4,18 +4,10 @@ apply from: "$rootDir/gradleScripts/jacoco.gradle"
 apply from: "$rootDir/gradleScripts/testing.gradle"
 apply from: "$rootDir/gradleScripts/kotlin.gradle"
 apply from: "$rootDir/gradleScripts/android.gradle"
+apply from: "$rootDir/gradleScripts/signingConfigs.gradle"
 
 android {
     compileSdkVersion 28
-
-    signingConfigs {
-        debug {
-            storeFile = file("conveyor.keystore")
-            storePassword = conveyorDebugKeyStorePassword
-            keyAlias = conveyorDebugKeyAlias
-            keyPassword = conveyorDebugKeyAliasPassword
-        }
-    }
 
     defaultConfig {
         applicationId "com.hodamohammadi.conveyor"
@@ -39,14 +31,6 @@ android {
         main.java.srcDirs += 'src/main/kotlin'
         test.java.srcDirs += 'src/test/kotlin'
         androidTest.java.srcDirs += 'src/androidTest/kotlin'
-    }
-
-    def isRunningOnTravis = System.getenv("CI") == "true"
-
-    if (isRunningOnTravis) {
-        signingConfigs.debug.storePassword = System.getenv("KEYSTORE_PASSWORD")
-        signingConfigs.debug.keyAlias = System.getenv("KEYSTORE_ALIAS")
-        signingConfigs.debug.keyPassword = System.getenv("KEYSTORE_ALIAS_PASSWORD")
     }
 }
 
