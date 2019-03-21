@@ -7,6 +7,8 @@ import android.widget.Toast
 import com.hodamohammadi.conveyor.R
 import com.firebase.ui.auth.AuthUI
 import com.firebase.ui.auth.IdpResponse
+import com.hodamohammadi.commons.navigation.loadIntentOrNull
+import com.hodamohammadi.conveyor.services.RoutePath
 import java.util.*
 
 /**
@@ -36,12 +38,15 @@ class AuthenticationActivity : AppCompatActivity() {
         if (requestCode == rcSignIn) {
             val response = IdpResponse.fromResultIntent(data);
             if (resultCode == RESULT_OK) {
-                startActivity(Intent(this, ChatActivity::class.java))
-                finish()
+                launchChat()
             } else {
                 Toast.makeText(this, response?.error?.localizedMessage, Toast.LENGTH_SHORT)
                         .show()
             }
         }
+    }
+    private fun launchChat() = RoutePath.CHAT_ACTIVITY.loadIntentOrNull().let {
+        it!!.action = RoutePath.CHATS_LIST_FRAGMENT
+        startActivity(it)
     }
 }
