@@ -1,1 +1,1 @@
-include ':conveyor', ':commons'
+include ':conveyor', ':navigation'
