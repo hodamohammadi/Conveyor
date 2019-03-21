@@ -35,6 +35,9 @@ android {
 }
 
 dependencies {
+    // Modules
+    api project(":commons")
+
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     // UI
