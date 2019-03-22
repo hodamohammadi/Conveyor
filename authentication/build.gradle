@@ -1,5 +1,4 @@
-apply plugin: 'com.android.library'
-apply plugin: 'com.google.gms.google-services'
+apply plugin: 'com.android.feature'
 apply from: "$rootDir/gradle/reporting/jacoco.gradle"
 apply from: "$rootDir/gradle/testing.gradle"
 apply from: "$rootDir/gradle/kotlin.gradle"
@@ -8,6 +7,9 @@ apply from: "$rootDir/gradle/android.gradle"
 android {
     compileSdkVersion 28
 
+
+    baseFeature true
+
     defaultConfig {
         minSdkVersion 23
         targetSdkVersion 28
@@ -15,6 +17,7 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
     }
 
     buildTypes {
@@ -38,10 +41,12 @@ android {
 }
 
 dependencies {
+    // Modules
+    api project(':navigation')
+
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    // Firebase
-    implementation "com.google.firebase:firebase-core:${versions.firebaseCore}"
-    implementation "com.google.firebase:firebase-messaging:${versions.firebaseMessaging}"
-
+    // UI
+    implementation "com.firebaseui:firebase-ui-auth:${versions.firebaseui}"
+    implementation "com.firebaseui:firebase-ui-auth-github:${versions.firebaseui}"
 }

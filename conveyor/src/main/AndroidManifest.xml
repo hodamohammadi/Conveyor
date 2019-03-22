@@ -11,7 +11,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.hodamohammadi.conveyor.activities.AuthenticationActivity">
+        <activity android:name="com.hodamohammadi.conveyor.com.hodamohammadi.authentication.AuthenticationActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="android.intent.action.VIEW" />
@@ -20,14 +20,7 @@
         </activity>
         <activity android:name="com.hodamohammadi.conveyor.activities.ChatActivity" />
 
-        <!-- [START firebase_service] -->
-        <service android:name="com.hodamohammadi.services.ConveyorNotificationService"
-            tools:ignore="ExportedService">
-            <intent-filter>
-                <action android:name="com.google.firebase.MESSAGING_EVENT" />
-            </intent-filter>
-        </service>
-        <!-- [END firebase_service] -->
+
     </application>
 
 </manifest>
