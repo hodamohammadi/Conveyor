@@ -1,4 +1,4 @@
-package com.hodamohammadi.commons.navigation
+package com.hodamohammadi.commons.navigation.loaders
 
 private val classMap = mutableMapOf<String, Class<*>>()
 

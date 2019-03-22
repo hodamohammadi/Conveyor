@@ -21,7 +21,7 @@
         <activity android:name="com.hodamohammadi.conveyor.activities.ChatActivity" />
 
         <!-- [START firebase_service] -->
-        <service android:name=".services.ConveyorNotificationService"
+        <service android:name="com.hodamohammadi.services.ConveyorNotificationService"
             tools:ignore="ExportedService">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />

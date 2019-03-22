@@ -1,4 +1,4 @@
-package com.hodamohammadi.conveyor.services
+package com.hodamohammadi.services
 
 import android.arch.lifecycle.Observer
 import android.support.annotation.CallSuper
@@ -16,7 +16,7 @@ open class BaseResourceObserver<T>: Observer<Resource<T>> {
                 Resource.Status.SUCCESS -> {
                     onSuccess(resource.data)
                 }
-                Resource.Status.ERROR->{
+                Resource.Status.ERROR ->{
                     onError()
                 }
             }

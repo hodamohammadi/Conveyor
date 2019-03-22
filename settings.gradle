@@ -1,1 +1,1 @@
-include ':conveyor', ':navigation', ':services'
+include ':conveyor', ':navigation', ':services', ':authentication'

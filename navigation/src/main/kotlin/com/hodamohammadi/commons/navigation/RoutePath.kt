@@ -1,4 +1,4 @@
-package com.hodamohammadi.conveyor.services
+package com.hodamohammadi.commons.navigation
 
 /**
  * Route path constants.

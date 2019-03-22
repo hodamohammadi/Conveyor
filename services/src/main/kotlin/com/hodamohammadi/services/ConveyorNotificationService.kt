@@ -1,4 +1,4 @@
-package com.hodamohammadi.conveyor.services
+package com.hodamohammadi.services
 
 import com.google.firebase.messaging.FirebaseMessagingService
 

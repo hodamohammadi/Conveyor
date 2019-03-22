@@ -1,9 +1,9 @@
-package com.hodamohammadi.conveyor.services
+package com.hodamohammadi.services
 
 /**
  * Resource class for handling application's service calls.
  */
-class Resource<T> private constructor(val status: Resource.Status, val data: T?, val exception: Exception?) {
+class Resource<T> private constructor(val status: Status, val data: T?, val exception: Exception?) {
     enum class Status {
         SUCCESS, ERROR, LOADING
     }
