@@ -26,7 +26,7 @@ class SingleChatFragment : Fragment(), MessageInput.InputListener, MessageInput.
     private lateinit var chatViewModel: ChatViewModel
 
     companion object {
-        fun newInstance() = ChatsListFragment()
+        fun newInstance() = SingleChatFragment()
     }
 
     override fun onCreateView(

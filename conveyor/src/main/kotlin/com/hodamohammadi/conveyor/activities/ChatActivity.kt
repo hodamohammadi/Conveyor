@@ -5,9 +5,7 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import com.hodamohammadi.commons.navigation.loadFragmentOrNull
 import com.hodamohammadi.conveyor.R
-import com.hodamohammadi.conveyor.fragments.ChatsListFragment
 import com.hodamohammadi.conveyor.services.RoutePath
-import com.hodamohammadi.conveyor.utils.FirebaseHelper
 
 /**
  * Main activity for chat screens.
