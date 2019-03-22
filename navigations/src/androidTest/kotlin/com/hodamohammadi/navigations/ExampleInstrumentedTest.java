@@ -1,4 +1,4 @@
-package com.hodamohammadi.commons;
+package com.hodamohammadi.navigations;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("com.hodamohammadi.commons.test", appContext.getPackageName());
+        assertEquals("com.hodamohammadi.navigations.test", appContext.getPackageName());
     }
 }

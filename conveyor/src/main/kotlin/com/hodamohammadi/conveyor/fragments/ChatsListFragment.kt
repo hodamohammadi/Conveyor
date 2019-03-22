@@ -7,11 +7,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import com.hodamohammadi.commons.navigation.loaders.loadIntentOrNull
+import com.hodamohammadi.navigations.loadIntentOrNull
 import com.hodamohammadi.conveyor.R
 import com.hodamohammadi.conveyor.models.DefaultDialog
-import com.hodamohammadi.conveyor.services.BaseResourceObserver
-import com.hodamohammadi.commons.navigation.RoutePath
+import com.hodamohammadi.services.BaseResourceObserver
+import com.hodamohammadi.navigations.RoutePath
 import com.hodamohammadi.conveyor.utils.AppUtils
 import com.hodamohammadi.conveyor.viewmodels.ChatViewModel
 import com.hodamohammadi.conveyor.viewmodels.ViewModelFactory

@@ -1,4 +1,4 @@
-package com.hodamohammadi.commons;
+package com.hodamohammadi.navigations;
 
 import org.junit.Test;
 

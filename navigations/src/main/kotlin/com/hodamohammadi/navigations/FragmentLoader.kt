@@ -1,4 +1,4 @@
-package com.hodamohammadi.commons.navigation.loaders
+package com.hodamohammadi.navigation
 
 import android.support.v4.app.Fragment
 

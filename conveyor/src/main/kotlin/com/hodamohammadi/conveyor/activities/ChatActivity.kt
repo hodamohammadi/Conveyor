@@ -3,9 +3,9 @@ package com.hodamohammadi.conveyor.activities
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import com.hodamohammadi.commons.navigation.loaders.loadFragmentOrNull
+import com.hodamohammadi.navigations.loadFragmentOrNull
 import com.hodamohammadi.conveyor.R
-import com.hodamohammadi.commons.navigation.RoutePath
+import com.hodamohammadi.navigations.RoutePath
 
 /**
  * Main activity for chat screens.

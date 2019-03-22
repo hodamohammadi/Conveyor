@@ -1,4 +1,4 @@
-package com.hodamohammadi.commons.navigation
+package com.hodamohammadi.navigation
 
 /**
  * Route path constants.
