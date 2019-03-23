@@ -36,8 +36,8 @@ android {
 
 dependencies {
     // Modules
-    api project(':navigations')
-    api project(':services')
+    implementation project(':navigations')
+    implementation project(':authentication')
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 

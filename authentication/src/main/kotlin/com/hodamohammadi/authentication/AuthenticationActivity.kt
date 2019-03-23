@@ -7,8 +7,8 @@ import android.widget.Toast
 import com.hodamohammadi.authentication.R
 import com.firebase.ui.auth.AuthUI
 import com.firebase.ui.auth.IdpResponse
-import com.hodamohammadi.navigations.loadIntentOrNull
-import com.hodamohammadi.navigations.RoutePath
+import com.hodamohammadi.navigation.RoutePath
+import com.hodamohammadi.navigation.loadIntentOrNull
 import java.util.*
 
 /**
