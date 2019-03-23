@@ -1,4 +1,4 @@
-package com.hodamohammadi.services
+package com.hodamohammadi.conveyor.services
 
 /**
  * Resource class for handling application's service calls.
