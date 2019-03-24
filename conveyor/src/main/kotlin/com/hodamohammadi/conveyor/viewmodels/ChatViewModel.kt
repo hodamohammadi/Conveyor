@@ -5,8 +5,8 @@ import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.Transformations
 import android.arch.lifecycle.ViewModel
 import com.hodamohammadi.conveyor.models.DefaultDialog
-import com.hodamohammadi.conveyor.services.Resource
 import com.hodamohammadi.conveyor.utils.FirebaseHelper
+import com.hodamohammadi.services.Resource
 
 /**
  * View model for communication between chat UIs.

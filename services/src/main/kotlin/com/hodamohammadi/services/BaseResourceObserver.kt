@@ -1,4 +1,4 @@
-package com.hodamohammadi.conveyor.services
+package com.hodamohammadi.services
 
 import android.arch.lifecycle.Observer
 import android.support.annotation.CallSuper

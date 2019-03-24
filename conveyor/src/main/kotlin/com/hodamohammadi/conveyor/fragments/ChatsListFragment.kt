@@ -9,12 +9,12 @@ import android.view.ViewGroup
 import android.widget.Toast
 import com.hodamohammadi.conveyor.R
 import com.hodamohammadi.conveyor.models.DefaultDialog
-import com.hodamohammadi.conveyor.services.BaseResourceObserver
 import com.hodamohammadi.conveyor.utils.AppUtils
 import com.hodamohammadi.conveyor.viewmodels.ChatViewModel
 import com.hodamohammadi.conveyor.viewmodels.ViewModelFactory
 import com.hodamohammadi.navigation.RoutePath
 import com.hodamohammadi.navigation.loadIntentOrNull
+import com.hodamohammadi.services.BaseResourceObserver
 import com.stfalcon.chatkit.commons.models.IDialog
 import com.stfalcon.chatkit.commons.models.IMessage
 import com.stfalcon.chatkit.dialogs.DialogsListAdapter

@@ -12,7 +12,7 @@ import com.google.firebase.database.ValueEventListener
 import com.hodamohammadi.conveyor.models.DefaultDialog
 import com.hodamohammadi.conveyor.models.DefaultMessage
 import com.hodamohammadi.conveyor.models.DefaultUser
-import com.hodamohammadi.conveyor.services.Resource
+import com.hodamohammadi.services.Resource
 import com.stfalcon.chatkit.commons.models.IMessage
 import java.util.Date
 
