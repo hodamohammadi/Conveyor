@@ -39,11 +39,12 @@ dependencies {
     implementation project(':navigations')
     implementation project(':authentication')
     implementation project(':services')
+    implementation project(':chat')
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     // UI
-    implementation "com.github.stfalcon:chatkit:${versions.chatkit}"
+
     implementation "com.firebaseui:firebase-ui-auth:${versions.firebaseui}"
     implementation "com.firebaseui:firebase-ui-auth-github:${versions.firebaseui}"
 

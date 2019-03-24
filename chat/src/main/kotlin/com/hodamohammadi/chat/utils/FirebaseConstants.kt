@@ -1,4 +1,4 @@
-package com.hodamohammadi.conveyor.utils
+package com.hodamohammadi.chat.utils
 
 /**
  * Firebase static constants.

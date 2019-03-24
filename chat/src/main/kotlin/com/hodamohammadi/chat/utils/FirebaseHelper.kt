@@ -1,4 +1,4 @@
-package com.hodamohammadi.conveyor.utils
+package com.hodamohammadi.chat.utils
 
 import android.arch.lifecycle.MutableLiveData
 import android.util.Log
@@ -9,9 +9,9 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
-import com.hodamohammadi.conveyor.models.DefaultDialog
-import com.hodamohammadi.conveyor.models.DefaultMessage
-import com.hodamohammadi.conveyor.models.DefaultUser
+import com.hodamohammadi.chat.models.DefaultDialog
+import com.hodamohammadi.chat.models.DefaultMessage
+import com.hodamohammadi.chat.models.DefaultUser
 import com.hodamohammadi.services.Resource
 import com.stfalcon.chatkit.commons.models.IMessage
 import java.util.Date

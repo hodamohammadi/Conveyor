@@ -43,11 +43,16 @@ android {
 dependencies {
     // Modules
     api project(':navigations')
-    api project(':chat')
+    api project(':services')
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     // UI
-    implementation "com.firebaseui:firebase-ui-auth:${versions.firebaseui}"
-    implementation "com.firebaseui:firebase-ui-auth-github:${versions.firebaseui}"
+    implementation "com.github.stfalcon:chatkit:${versions.chatkit}"
+
+    // Firebase
+    implementation "com.google.firebase:firebase-core:${versions.firebaseCore}"
+    implementation "com.google.firebase:firebase-auth:${versions.firebaseAuth}"
+    implementation "com.google.firebase:firebase-database:${versions.firebaseDatabase}"
+    implementation "com.google.firebase:firebase-storage:${versions.firebaseStorage}"
 }

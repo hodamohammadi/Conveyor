@@ -1,4 +1,4 @@
-package com.hodamohammadi.conveyor.fragments
+package com.hodamohammadi.chat.fragments
 
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
@@ -6,11 +6,11 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.hodamohammadi.conveyor.utils.FirebaseHelper
-import com.hodamohammadi.conveyor.R
-import com.hodamohammadi.conveyor.utils.AppUtils
-import com.hodamohammadi.conveyor.viewmodels.ViewModelFactory
-import com.hodamohammadi.conveyor.viewmodels.ChatViewModel
+import com.hodamohammadi.chat.utils.FirebaseHelper
+import com.hodamohammadi.chat.R
+import com.hodamohammadi.chat.utils.AppUtils
+import com.hodamohammadi.chat.viewmodels.ViewModelFactory
+import com.hodamohammadi.chat.viewmodels.ChatViewModel
 import com.stfalcon.chatkit.commons.models.IMessage
 import com.stfalcon.chatkit.messages.MessageInput
 import com.stfalcon.chatkit.messages.MessagesListAdapter

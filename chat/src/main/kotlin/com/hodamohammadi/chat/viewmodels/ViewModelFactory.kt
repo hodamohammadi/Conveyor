@@ -1,4 +1,4 @@
-package com.hodamohammadi.conveyor.viewmodels
+package com.hodamohammadi.chat.viewmodels
 
 import android.arch.lifecycle.ViewModel
 import android.arch.lifecycle.ViewModelProvider

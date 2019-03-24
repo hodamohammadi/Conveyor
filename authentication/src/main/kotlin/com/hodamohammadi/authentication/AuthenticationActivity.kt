@@ -9,7 +9,6 @@ import com.firebase.ui.auth.AuthUI
 import com.firebase.ui.auth.IdpResponse
 import com.hodamohammadi.navigation.RoutePath
 import com.hodamohammadi.navigations.features.ChatNavigation
-import com.hodamohammadi.navigations.loaders.loadIntentOrNull
 import java.util.*
 
 /**
@@ -37,7 +36,7 @@ class AuthenticationActivity : AppCompatActivity() {
     public override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == rcSignIn) {
-            val response = IdpResponse.fromResultIntent(data);
+            val response = IdpResponse.fromResultIntent(data)
             if (resultCode == RESULT_OK) {
                 launchChat()
             } else {
@@ -47,7 +46,7 @@ class AuthenticationActivity : AppCompatActivity() {
         }
     }
     private fun launchChat() = ChatNavigation.dynamicStart?.let {
-        it!!.action = RoutePath.CHATS_LIST_FRAGMENT
+        it.action = RoutePath.CHATS_LIST_FRAGMENT
         startActivity(it)
     }
 }

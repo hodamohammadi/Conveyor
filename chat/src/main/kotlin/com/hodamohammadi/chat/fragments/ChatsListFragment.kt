@@ -1,4 +1,4 @@
-package com.hodamohammadi.conveyor.fragments
+package com.hodamohammadi.chat.fragments
 
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
@@ -7,14 +7,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import com.hodamohammadi.conveyor.R
-import com.hodamohammadi.conveyor.models.DefaultDialog
-import com.hodamohammadi.conveyor.utils.AppUtils
-import com.hodamohammadi.conveyor.viewmodels.ChatViewModel
-import com.hodamohammadi.conveyor.viewmodels.ViewModelFactory
+import com.hodamohammadi.chat.R
+import com.hodamohammadi.chat.models.DefaultDialog
+import com.hodamohammadi.chat.utils.AppUtils
+import com.hodamohammadi.chat.viewmodels.ChatViewModel
+import com.hodamohammadi.chat.viewmodels.ViewModelFactory
 import com.hodamohammadi.navigation.RoutePath
 import com.hodamohammadi.navigations.features.ChatNavigation
-import com.hodamohammadi.navigations.loaders.loadIntentOrNull
 import com.hodamohammadi.services.BaseResourceObserver
 import com.stfalcon.chatkit.commons.models.IDialog
 import com.stfalcon.chatkit.commons.models.IMessage

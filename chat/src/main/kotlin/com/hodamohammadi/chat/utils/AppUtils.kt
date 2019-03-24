@@ -1,4 +1,4 @@
-package com.hodamohammadi.conveyor.utils
+package com.hodamohammadi.chat.utils
 
 import android.widget.ImageView
 import com.stfalcon.chatkit.commons.ImageLoader

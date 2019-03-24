@@ -1,4 +1,4 @@
-package com.hodamohammadi.conveyor.models
+package com.hodamohammadi.chat.models
 
 import com.stfalcon.chatkit.commons.models.IMessage
 import com.stfalcon.chatkit.commons.models.IUser
