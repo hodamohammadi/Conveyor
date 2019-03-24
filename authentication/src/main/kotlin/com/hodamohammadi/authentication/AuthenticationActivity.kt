@@ -8,7 +8,8 @@ import com.hodamohammadi.authentication.R
 import com.firebase.ui.auth.AuthUI
 import com.firebase.ui.auth.IdpResponse
 import com.hodamohammadi.navigation.RoutePath
-import com.hodamohammadi.navigation.loadIntentOrNull
+import com.hodamohammadi.navigations.features.ChatNavigation
+import com.hodamohammadi.navigations.loaders.loadIntentOrNull
 import java.util.*
 
 /**
@@ -45,7 +46,7 @@ class AuthenticationActivity : AppCompatActivity() {
             }
         }
     }
-    private fun launchChat() = RoutePath.CHAT_ACTIVITY.loadIntentOrNull().let {
+    private fun launchChat() = ChatNavigation.dynamicStart?.let {
         it!!.action = RoutePath.CHATS_LIST_FRAGMENT
         startActivity(it)
     }

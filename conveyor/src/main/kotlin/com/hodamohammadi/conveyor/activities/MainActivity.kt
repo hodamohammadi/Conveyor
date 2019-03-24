@@ -4,7 +4,8 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import com.hodamohammadi.conveyor.R
 import com.hodamohammadi.navigation.RoutePath
-import com.hodamohammadi.navigation.loadIntentOrNull
+import com.hodamohammadi.navigations.features.AuthenticationNavigation
+import com.hodamohammadi.navigations.loaders.loadIntentOrNull
 
 /**
  * Main application activity.
@@ -17,7 +18,7 @@ class MainActivity: AppCompatActivity() {
         launchAuthentication()
     }
 
-    private fun launchAuthentication() = RoutePath.AUTHENTICATION.loadIntentOrNull().let {
+    private fun launchAuthentication() = AuthenticationNavigation.dynamicStart?.let {
         startActivity(it)
     }
 }
