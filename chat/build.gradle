@@ -1,0 +1,58 @@
+apply plugin: 'com.android.feature'
+apply from: "$rootDir/gradle/reporting/jacoco.gradle"
+apply from: "$rootDir/gradle/testing.gradle"
+apply from: "$rootDir/gradle/kotlin.gradle"
+apply from: "$rootDir/gradle/android.gradle"
+
+android {
+    compileSdkVersion 28
+
+
+    baseFeature true
+
+    defaultConfig {
+        minSdkVersion 23
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    }
+
+    buildTypes {
+        release {
+            postprocessing {
+                removeUnusedCode false
+                removeUnusedResources false
+                obfuscate false
+                optimizeCode false
+                proguardFile 'proguard-rules.pro'
+            }
+        }
+    }
+
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin/'
+        test.java.srcDirs += 'src/test/kotlin/'
+        androidTest.java.srcDirs += 'src/androidTest/kotlin/'
+    }
+
+}
+
+dependencies {
+    // Modules
+    api project(':navigations')
+    api project(':services')
+
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    // UI
+    implementation "com.github.stfalcon:chatkit:${versions.chatkit}"
+
+    // Firebase
+    implementation "com.google.firebase:firebase-core:${versions.firebaseCore}"
+    implementation "com.google.firebase:firebase-auth:${versions.firebaseAuth}"
+    implementation "com.google.firebase:firebase-database:${versions.firebaseDatabase}"
+    implementation "com.google.firebase:firebase-storage:${versions.firebaseStorage}"
+}
