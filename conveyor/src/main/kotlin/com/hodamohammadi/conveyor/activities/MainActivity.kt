@@ -3,9 +3,7 @@ package com.hodamohammadi.conveyor.activities
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import com.hodamohammadi.conveyor.R
-import com.hodamohammadi.navigation.RoutePath
 import com.hodamohammadi.navigations.features.AuthenticationNavigation
-import com.hodamohammadi.navigations.loaders.loadIntentOrNull
 
 /**
  * Main application activity.
