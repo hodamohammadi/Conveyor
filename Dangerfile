@@ -7,13 +7,17 @@ if github.pr_title.include? "[WIP]"
     warn("PR is classed as Work in Progress - DO NOT MERGE")
 else
     # Android Lint
-    android_lint.skip_gradle_task = true
-    android_lint.report_file = "conveyor/build/reports/lint-results-debug.xml"
-    android_lint.lint
+    Dir["*/build/reports/lint-results-debug.xml"].each do |file|
+        android_lint.skip_gradle_task = true
+        android_lint.report_file = file
+        android_lint.lint
+    end
 
     # Kotlin Lint
-    checkstyle_format.base_path = Dir.pwd
-    checkstyle_format.report 'conveyor/build/reports/detekt/detekt.xml'
+    Dir["*/build/reports/detekt/detekt.xml"].each do |file|
+        checkstyle_format.base_path = Dir.pwd
+        checkstyle_format.report file
+    end
 end
 
 # Warn when there is a big PR
