@@ -42,7 +42,8 @@ android {
 
 dependencies {
     // Modules
-    api project(':navigations')
+    implementation project(':navigations')
+    implementation project(path: ':conveyor', configuration: 'default')
     api project(':services')
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])

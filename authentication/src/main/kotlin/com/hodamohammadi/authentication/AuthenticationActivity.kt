@@ -49,4 +49,13 @@ class AuthenticationActivity : AppCompatActivity() {
         it.action = RoutePath.CHATS_LIST_FRAGMENT
         startActivity(it)
     }
+
+    private fun signInSuccess() = setResult(RESULT_OK).also { finish() }
+
+    private fun signInFail() = setResult(RESULT_CANCELED).also { finish() }
+
+    override fun onBackPressed() {
+        setResult(RESULT_CANCELED)
+        super.onBackPressed()
+    }
 }
