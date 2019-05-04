@@ -29,10 +29,6 @@ class ChatsListFragment : Fragment(), DialogsListAdapter.OnDialogClickListener<I
     private lateinit var dialogListAdapter: DialogsListAdapter<IDialog<IMessage>>
     private lateinit var chatViewModel: ChatViewModel
 
-    companion object {
-        fun newInstance() = ChatsListFragment()
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
