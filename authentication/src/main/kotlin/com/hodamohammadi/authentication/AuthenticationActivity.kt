@@ -7,8 +7,6 @@ import android.widget.Toast
 import com.hodamohammadi.authentication.R
 import com.firebase.ui.auth.AuthUI
 import com.firebase.ui.auth.IdpResponse
-import com.hodamohammadi.navigation.RoutePath
-import com.hodamohammadi.navigations.features.ChatNavigation
 import java.util.*
 
 /**
@@ -36,17 +34,24 @@ class AuthenticationActivity : AppCompatActivity() {
     public override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == rcSignIn) {
-            val response = IdpResponse.fromResultIntent(data)
             if (resultCode == RESULT_OK) {
-                launchChat()
+                signInSuccess()
             } else {
-                Toast.makeText(this, response?.error?.localizedMessage, Toast.LENGTH_SHORT)
-                        .show()
+                val response = IdpResponse.fromResultIntent(data)
+                signInFail(response?.error?.localizedMessage)
             }
         }
     }
-    private fun launchChat() = ChatNavigation.dynamicStart?.let {
-        it.action = RoutePath.CHATS_LIST_FRAGMENT
-        startActivity(it)
+
+    private fun signInSuccess() = setResult(RESULT_OK).also { finish() }
+
+    private fun signInFail(message: String?) = setResult(RESULT_CANCELED).also {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+        finish()
+    }
+
+    override fun onBackPressed() {
+        setResult(RESULT_CANCELED)
+        super.onBackPressed()
     }
 }

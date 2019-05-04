@@ -15,18 +15,19 @@ class ChatActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.chat_activity)
+
         parseIntent(intent)
     }
 
     private fun parseIntent(intent: Intent) {
         val action: String = intent.action
-        if (RoutePath.CHATS_LIST_FRAGMENT.equals(action)) {
+        if (RoutePath.CHATS_LIST_FRAGMENT == action) {
             supportFragmentManager
                     .beginTransaction()
                     .add(R.id.chat_container, RoutePath.CHATS_LIST_FRAGMENT.loadFragmentOrNull()!!)
                     .commit()
 
-        } else if (RoutePath.SINGLE_CHAT_FRAGMENT.equals(action)) {
+        } else if (RoutePath.SINGLE_CHAT_FRAGMENT == action) {
             supportFragmentManager
                     .beginTransaction()
                     .add(R.id.chat_container, RoutePath.SINGLE_CHAT_FRAGMENT.loadFragmentOrNull()!!)
