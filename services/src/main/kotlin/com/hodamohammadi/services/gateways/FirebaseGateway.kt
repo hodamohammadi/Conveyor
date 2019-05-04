@@ -1,4 +1,4 @@
-package com.hodamohammadi.chat.utils
+package com.hodamohammadi.services.gateways
 
 import android.arch.lifecycle.MutableLiveData
 import android.util.Log
@@ -12,6 +12,7 @@ import com.google.firebase.database.ValueEventListener
 import com.hodamohammadi.chat.models.DefaultDialog
 import com.hodamohammadi.chat.models.DefaultMessage
 import com.hodamohammadi.chat.models.DefaultUser
+import com.hodamohammadi.services.DatabaseConstants
 import com.hodamohammadi.services.Resource
 import com.stfalcon.chatkit.commons.models.IMessage
 import java.util.Date
@@ -19,9 +20,9 @@ import java.util.Date
 /**
  * Helper class for Firebase services.
  */
-class FirebaseHelper private constructor() {
+class FirebaseGateway private constructor() {
     companion object {
-        private val TAG = FirebaseHelper::class.qualifiedName
+        private val TAG = FirebaseGateway::class.qualifiedName
         private val firebaseAuth: FirebaseAuth = FirebaseAuth.getInstance()
         private val firebaseDatabase: FirebaseDatabase = FirebaseDatabase.getInstance()
         private var localUser: DefaultUser? = null
@@ -49,7 +50,7 @@ class FirebaseHelper private constructor() {
 
         private fun getThreadsDatabase(): DatabaseReference {
             val databaseReference: DatabaseReference =
-                    firebaseDatabase.getReference(FirebaseConstants.THREADS_DATABASE)
+                    firebaseDatabase.getReference(DatabaseConstants.THREADS_DATABASE)
             databaseReference.addValueEventListener(object : ValueEventListener {
                 override fun onDataChange(dataSnapshot: DataSnapshot) {
                     Log.d(TAG, "successful database reference")
@@ -64,7 +65,7 @@ class FirebaseHelper private constructor() {
 
         private fun getUsersDatabase(): DatabaseReference {
             val databaseReference: DatabaseReference =
-                    firebaseDatabase.getReference(FirebaseConstants.USERS_DATABASE)
+                    firebaseDatabase.getReference(DatabaseConstants.USERS_DATABASE)
             databaseReference.addValueEventListener(object : ValueEventListener {
                 override fun onDataChange(dataSnapshot: DataSnapshot) {
                     Log.d(TAG, "successful database reference")
@@ -83,7 +84,7 @@ class FirebaseHelper private constructor() {
             val threads: MutableList<DefaultDialog> = mutableListOf()
             val messageReference: DatabaseReference =
                     getUsersDatabase().child(firebaseAuth.currentUser!!.uid)
-                            .child(FirebaseConstants.USER_THREADS)
+                            .child(DatabaseConstants.USER_THREADS)
 
             messageReference.addListenerForSingleValueEvent(object : ValueEventListener {
                         override fun onDataChange(dataSnapshot: DataSnapshot) {

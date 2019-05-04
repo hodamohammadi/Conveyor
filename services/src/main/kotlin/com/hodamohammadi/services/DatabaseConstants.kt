@@ -1,9 +1,9 @@
-package com.hodamohammadi.chat.utils
+package com.hodamohammadi.services
 
 /**
  * Firebase static constants.
  */
-class FirebaseConstants private constructor(){
+class DatabaseConstants private constructor(){
     companion object {
         const val THREADS_DATABASE: String = "threads"
         const val USERS_DATABASE: String = "users"
