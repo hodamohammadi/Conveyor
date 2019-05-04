@@ -42,8 +42,8 @@ android {
 
 dependencies {
     // Modules
-    api project(':navigations')
-    api project(':services')
+    implementation project(':navigations')
+    implementation project(':services')
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
@@ -52,7 +52,4 @@ dependencies {
 
     // Firebase
     implementation "com.google.firebase:firebase-core:${versions.firebaseCore}"
-    implementation "com.google.firebase:firebase-auth:${versions.firebaseAuth}"
-    implementation "com.google.firebase:firebase-database:${versions.firebaseDatabase}"
-    implementation "com.google.firebase:firebase-storage:${versions.firebaseStorage}"
 }
