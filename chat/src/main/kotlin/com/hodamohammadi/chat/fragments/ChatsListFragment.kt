@@ -14,6 +14,7 @@ import com.hodamohammadi.chat.viewmodels.ChatViewModel
 import com.hodamohammadi.chat.viewmodels.ViewModelFactory
 import com.hodamohammadi.navigation.RoutePath
 import com.hodamohammadi.navigations.features.ChatNavigation
+import com.hodamohammadi.navigations.loaders.loadFragmentOrNull
 import com.hodamohammadi.services.BaseResourceObserver
 import com.stfalcon.chatkit.commons.models.IDialog
 import com.stfalcon.chatkit.commons.models.IMessage
@@ -25,6 +26,10 @@ import kotlinx.android.synthetic.main.chats_list_fragment.*
  */
 class ChatsListFragment : Fragment(), DialogsListAdapter.OnDialogClickListener<IDialog<IMessage>>,
         DialogsListAdapter.OnDialogLongClickListener<IDialog<IMessage>> {
+
+    companion object {
+        private val TAG = ChatsListFragment::class.qualifiedName
+    }
 
     private lateinit var dialogListAdapter: DialogsListAdapter<IDialog<IMessage>>
     private lateinit var chatViewModel: ChatViewModel
@@ -68,16 +73,21 @@ class ChatsListFragment : Fragment(), DialogsListAdapter.OnDialogClickListener<I
     }
 
     override fun onDialogClick(dialog: IDialog<IMessage>?) {
-        chatViewModel.threadId = dialog!!.id
-        startChat()
+        if (dialog != null && dialog.id != null) {
+            chatViewModel.threadId = dialog.id
+            openSelectedChat()
+        }
     }
 
     override fun onDialogLongClick(dialog: IDialog<IMessage>?) {
         // TODO: Implement chat delete/edits
     }
 
-    private fun startChat() = ChatNavigation.dynamicStart?.let {
-        it!!.action = RoutePath.SINGLE_CHAT_FRAGMENT
-        startActivity(it)
+    private fun openSelectedChat() {
+        requireActivity().supportFragmentManager
+                .beginTransaction()
+                .replace(R.id.chat_container, RoutePath.SINGLE_CHAT_FRAGMENT.loadFragmentOrNull()!!)
+                .addToBackStack(TAG)
+                .commit()
     }
 }

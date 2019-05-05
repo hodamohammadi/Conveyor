@@ -82,23 +82,46 @@ class FirebaseGateway private constructor() {
             val data = MutableLiveData<Resource<List<DefaultDialog>>>()
 
             val threads: MutableList<DefaultDialog> = mutableListOf()
-            val messageReference: DatabaseReference =
+            val threadsReference: DatabaseReference =
                     getUsersDatabase().child(firebaseAuth.currentUser!!.uid)
                             .child(DatabaseConstants.USER_THREADS)
 
-            messageReference.addListenerForSingleValueEvent(object : ValueEventListener {
-                        override fun onDataChange(dataSnapshot: DataSnapshot) {
-                            for (childDataSnapshot: DataSnapshot in dataSnapshot.children) {
-                                childDataSnapshot.getValue(DefaultDialog::class.java)!!
-                                threads.add(childDataSnapshot.getValue(DefaultDialog::class.java)!!)
-                            }
-                            data.value = Resource.success(threads)
-                        }
+            threadsReference.addListenerForSingleValueEvent(object : ValueEventListener {
+                override fun onDataChange(dataSnapshot: DataSnapshot) {
+                    for (childDataSnapshot: DataSnapshot in dataSnapshot.children) {
+                        childDataSnapshot.getValue(DefaultDialog::class.java)!!
+                        threads.add(childDataSnapshot.getValue(DefaultDialog::class.java)!!)
+                    }
+                    data.value = Resource.success(threads)
+                }
 
-                        override fun onCancelled(databaseError: DatabaseError) {
-                            data.value = Resource.error(null)
-                        }
-                    })
+                override fun onCancelled(databaseError: DatabaseError) {
+                    data.value = Resource.error(null)
+                }
+            })
+
+            return data
+        }
+
+        fun getThreadHistory(threadId: String): MutableLiveData<Resource<List<DefaultMessage>>> {
+            val data = MutableLiveData<Resource<List<DefaultMessage>>>()
+
+            val messages: MutableList<DefaultMessage> = mutableListOf()
+            val messageReference: DatabaseReference = getThreadsDatabase().child(threadId)
+
+            messageReference.addListenerForSingleValueEvent(object : ValueEventListener {
+                override fun onDataChange(dataSnapshot: DataSnapshot) {
+                    for (childDataSnapshot: DataSnapshot in dataSnapshot.children) {
+                        childDataSnapshot.getValue(DefaultMessage::class.java)!!
+                        messages.add(childDataSnapshot.getValue(DefaultMessage::class.java)!!)
+                    }
+                    data.value = Resource.success(messages)
+                }
+
+                override fun onCancelled(databaseError: DatabaseError) {
+                    data.value = Resource.error(null)
+                }
+            })
 
             return data
         }
