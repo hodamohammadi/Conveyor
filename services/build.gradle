@@ -39,4 +39,11 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
+    // Models
+    implementation "com.github.stfalcon:chatkit:${versions.chatkit}"
+
+    // Firebase
+    implementation "com.google.firebase:firebase-auth:${versions.firebaseAuth}"
+    implementation "com.google.firebase:firebase-database:${versions.firebaseDatabase}"
+
 }

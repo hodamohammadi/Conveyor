@@ -38,7 +38,7 @@ dependencies {
     // Modules
     implementation project(':navigations')
     implementation project(':authentication')
-    implementation project(':services')
+    implementation project(':chat')
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 

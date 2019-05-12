@@ -42,8 +42,7 @@ android {
 
 dependencies {
     // Modules
-    api project(':navigations')
-    api project(':chat')
+    implementation project(':navigations')
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 

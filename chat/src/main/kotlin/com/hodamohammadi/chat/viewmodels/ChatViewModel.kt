@@ -5,7 +5,7 @@ import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.Transformations
 import android.arch.lifecycle.ViewModel
 import com.hodamohammadi.chat.models.DefaultDialog
-import com.hodamohammadi.chat.utils.FirebaseHelper
+import com.hodamohammadi.services.gateways.FirebaseGateway
 import com.hodamohammadi.services.Resource
 
 /**
@@ -18,7 +18,7 @@ class ChatViewModel : ViewModel() {
 
     init {
         getUserDialogsLiveData = Transformations.switchMap(getUserDialogs){
-            FirebaseHelper.getUserThreads()
+            FirebaseGateway.getUserThreads()
         }
     }
 

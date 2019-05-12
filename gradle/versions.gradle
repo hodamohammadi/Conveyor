@@ -10,8 +10,8 @@ ext {
 
             // Firebase
             "firebaseCore"          : "16.0.8",
-            "firebaseMessaging"     : "17.5.0",
-            "firebaseAuth"          : "16.2.0",
+            "firebaseMessaging"     : "17.6.0",
+            "firebaseAuth"          : "16.2.1",
             "firebaseDatabase"      : "16.1.0",
             "firebaseStorage"       : "16.1.0",
 

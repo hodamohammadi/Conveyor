@@ -6,7 +6,7 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.hodamohammadi.chat.utils.FirebaseHelper
+import com.hodamohammadi.services.gateways.FirebaseGateway
 import com.hodamohammadi.chat.R
 import com.hodamohammadi.chat.utils.AppUtils
 import com.hodamohammadi.chat.viewmodels.ViewModelFactory
@@ -24,10 +24,6 @@ class SingleChatFragment : Fragment(), MessageInput.InputListener, MessageInput.
 
     private lateinit var messagesAdapter: MessagesListAdapter<IMessage>
     private lateinit var chatViewModel: ChatViewModel
-
-    companion object {
-        fun newInstance() = SingleChatFragment()
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -51,14 +47,14 @@ class SingleChatFragment : Fragment(), MessageInput.InputListener, MessageInput.
 
     private fun initAdapter() {
         messagesAdapter =
-                MessagesListAdapter(FirebaseHelper.getCurrentUser().id, AppUtils.CustomImageLoader)
+                MessagesListAdapter(FirebaseGateway.getCurrentUser().id, AppUtils.CustomImageLoader)
         this.messagesList.setAdapter(messagesAdapter)
     }
 
     override fun onSubmit(input: CharSequence): Boolean {
         chatViewModel.threadId = "thread_id_placeholder"
         val message: IMessage =
-                FirebaseHelper.sendMessage(input.toString(), chatViewModel.threadId!!)
+                FirebaseGateway.sendMessage(input.toString(), chatViewModel.threadId!!)
         messagesAdapter.addToStart(message, true)
         return true
     }
