@@ -8,9 +8,11 @@ import android.view.View
 import android.view.ViewGroup
 import com.hodamohammadi.services.gateways.FirebaseGateway
 import com.hodamohammadi.chat.R
+import com.hodamohammadi.chat.models.DefaultMessage
 import com.hodamohammadi.chat.utils.AppUtils
 import com.hodamohammadi.chat.viewmodels.ViewModelFactory
 import com.hodamohammadi.chat.viewmodels.ChatViewModel
+import com.hodamohammadi.services.BaseResourceObserver
 import com.stfalcon.chatkit.commons.models.IMessage
 import com.stfalcon.chatkit.messages.MessageInput
 import com.stfalcon.chatkit.messages.MessagesListAdapter
@@ -39,10 +41,24 @@ class SingleChatFragment : Fragment(), MessageInput.InputListener, MessageInput.
         input.setTypingListener(this)
         input.setAttachmentsListener(this)
 
+        initAdapter()
+
         chatViewModel = ViewModelProviders.of(requireActivity(), ViewModelFactory)
                 .get(ChatViewModel::class.java)
 
-        initAdapter()
+        chatViewModel.getThreadHistoryLiveData
+                .observe(this, object : BaseResourceObserver<List<DefaultMessage>>() {
+                    override fun onSuccess(data: List<DefaultMessage>?) {
+                        super.onSuccess(data)
+                        if (!data.isNullOrEmpty()) {
+                            for (message: DefaultMessage in data!!) {
+                                messagesAdapter.addToStart(message, false)
+                            }
+                            messagesAdapter.notifyDataSetChanged()
+                        }
+                    }
+                })
+        chatViewModel.getThreadHistory.value = null
     }
 
     private fun initAdapter() {
@@ -52,7 +68,6 @@ class SingleChatFragment : Fragment(), MessageInput.InputListener, MessageInput.
     }
 
     override fun onSubmit(input: CharSequence): Boolean {
-        chatViewModel.threadId = "thread_id_placeholder"
         val message: IMessage =
                 FirebaseGateway.sendMessage(input.toString(), chatViewModel.threadId!!)
         messagesAdapter.addToStart(message, true)
