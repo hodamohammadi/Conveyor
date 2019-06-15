@@ -1,6 +1,7 @@
 package com.hodamohammadi.chat.utils
 
 import android.widget.ImageView
+import com.squareup.picasso.Picasso
 import com.stfalcon.chatkit.commons.ImageLoader
 
 /**
@@ -9,7 +10,7 @@ import com.stfalcon.chatkit.commons.ImageLoader
 class AppUtils {
     object CustomImageLoader : ImageLoader {
         override fun loadImage(imageView: ImageView, url: String?, payload: Any?) {
-            // TODO: set image.
+            Picasso.get().load(url).into(imageView);
         }
     }
 }
