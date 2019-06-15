@@ -11,7 +11,8 @@ import com.hodamohammadi.chat.R
 import com.hodamohammadi.chat.models.DefaultMessage
 import com.hodamohammadi.chat.utils.AppUtils
 import com.hodamohammadi.chat.viewmodels.ViewModelFactory
-import com.hodamohammadi.chat.viewmodels.ChatViewModel
+import com.hodamohammadi.chat.viewmodels.SharedChatViewModel
+import com.hodamohammadi.chat.viewmodels.SingleChatViewModel
 import com.hodamohammadi.services.BaseResourceObserver
 import com.stfalcon.chatkit.commons.models.IMessage
 import com.stfalcon.chatkit.messages.MessageInput
@@ -25,7 +26,8 @@ class SingleChatFragment : Fragment(), MessageInput.InputListener, MessageInput.
         MessageInput.TypingListener {
 
     private lateinit var messagesAdapter: MessagesListAdapter<IMessage>
-    private lateinit var chatViewModel: ChatViewModel
+    private lateinit var sharedChatViewModel: SharedChatViewModel
+    private lateinit var singleChatViewModel: SingleChatViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -43,22 +45,25 @@ class SingleChatFragment : Fragment(), MessageInput.InputListener, MessageInput.
 
         initAdapter()
 
-        chatViewModel = ViewModelProviders.of(requireActivity(), ViewModelFactory)
-                .get(ChatViewModel::class.java)
+        sharedChatViewModel = ViewModelProviders.of(requireActivity(), ViewModelFactory)
+                .get(SharedChatViewModel::class.java)
 
-        chatViewModel.getThreadHistoryLiveData
+        singleChatViewModel = ViewModelProviders.of(this, ViewModelFactory)
+                .get(SingleChatViewModel::class.java)
+
+        singleChatViewModel.getThreadHistoryLiveData
                 .observe(this, object : BaseResourceObserver<List<DefaultMessage>>() {
                     override fun onSuccess(data: List<DefaultMessage>?) {
                         super.onSuccess(data)
                         if (!data.isNullOrEmpty()) {
-                            for (message: DefaultMessage in data!!) {
+                            for (message: DefaultMessage in data) {
                                 messagesAdapter.addToStart(message, false)
                             }
                             messagesAdapter.notifyDataSetChanged()
                         }
                     }
                 })
-        chatViewModel.getThreadHistory.value = null
+        singleChatViewModel.getThreadHistory.value = sharedChatViewModel.threadId
     }
 
     private fun initAdapter() {
@@ -69,7 +74,7 @@ class SingleChatFragment : Fragment(), MessageInput.InputListener, MessageInput.
 
     override fun onSubmit(input: CharSequence): Boolean {
         val message: IMessage =
-                FirebaseGateway.sendMessage(input.toString(), chatViewModel.threadId!!)
+                FirebaseGateway.sendMessage(input.toString(), sharedChatViewModel.threadId!!)
         messagesAdapter.addToStart(message, true)
         return true
     }

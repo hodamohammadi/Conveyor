@@ -49,6 +49,7 @@ dependencies {
 
     // UI
     implementation "com.github.stfalcon:chatkit:${versions.chatkit}"
+    implementation "com.squareup.picasso:picasso:${versions.picasso}"
 
     // Firebase
     implementation "com.google.firebase:firebase-core:${versions.firebaseCore}"

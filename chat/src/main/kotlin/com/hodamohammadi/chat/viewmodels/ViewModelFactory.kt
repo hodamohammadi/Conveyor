@@ -8,8 +8,12 @@ import android.arch.lifecycle.ViewModelProvider
  */
 object ViewModelFactory: ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        return if (modelClass.isAssignableFrom(ChatViewModel::class.java)) {
-            ChatViewModel() as T
+        return if (modelClass.isAssignableFrom(SharedChatViewModel::class.java)) {
+            SharedChatViewModel() as T
+        } else if (modelClass.isAssignableFrom(SingleChatViewModel::class.java)) {
+            SingleChatViewModel() as T
+        } else if (modelClass.isAssignableFrom(ChatsListViewModel::class.java)) {
+            ChatsListViewModel() as T
         } else {
             throw IllegalArgumentException("ViewModel Not Found")
         }
